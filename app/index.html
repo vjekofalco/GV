@@ -40,14 +40,8 @@
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Brand<strong class="caret"></strong></a>
                                     <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="#">Brand 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Another Brand</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">One more Brand</a>
+                                        <li ng-repeat="x in filtered">
+                                            <a ng-click="filterModels('brand', x.brand)">{{x.brand}}</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -91,7 +85,7 @@
 
                         <table>
                             <tbody>
-                                <tr ng-repeat="x in models">
+                                <tr ng-repeat="x in filtered">
                 
                                     <td style="text-align:centre">{{x.model}} <br> {{x.size}} <br>{{x.price}}</td>
                                     <td style="text-align:centre"><img src= "{{x.logo}}"/></td>

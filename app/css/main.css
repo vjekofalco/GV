@@ -3,3 +3,16 @@
 	-moz-column-count: 2; /* Firefox */
 	column-count: 2;
 	text-align: center;}
+
+#volumes{
+	margin-top: 83px;
+}
+
+#footer{
+
+        bottom: -50px;
+        height: 50px;
+        left: 0;
+        
+        right: 0;
+       }

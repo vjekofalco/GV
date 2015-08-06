@@ -19,4 +19,37 @@ angular.module('firstPage', []).controller('displayModels', function($scope){
 
 		];
 
+		$scope.filtered = $scope.models;
+
+		//Function is filtering models arraz
+		$scope.filterModels = function(filter, value) {
+
+			if(!filter || !value) {
+
+				$scope.filtered = $scope.models;
+				return;
+
+			}
+
+			$scope.filtered = $scope.models.filter(function(item){
+
+				return item[filter] == value;
+
+			});
+
+		}
+
+		//Function is getting all brands for display.
+		$scope.brands = function(){
+
+
+
+		}
+
+		//Function is getting gender for display according the data scope.
+		$scope.gender = function(){
+
+
+		}
+
 	});
