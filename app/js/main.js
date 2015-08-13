@@ -1,8 +1,84 @@
-angular.module('firstPage', []).controller('displayModels', function($scope){
+angular.module('firstPage', [])
 
+.config(function($httpProvider) {
+
+	$httpProvider.interceptors.push(function(){
+
+		return {
+
+			response: function(res) {
+
+				console.log("in response");
+				return res;
+
+			}
+
+		}
+
+	})
+
+})
+
+.service('myService', function ($http){
+
+	var credentials = {
+        username: 'admin', 
+        password: 'admin',
+        grant_type: 'password',
+        client_id: 'ifair-app'
+        };
+
+this.getToken = function(){
+
+	console.log("in getToken");
+
+
+    $http.post("http://grandvision-ifair-server.appropo.info/api/oauth", credentials)
+        .success(function (data, status, headers, config) {
+       
+            sessionStorage.setItem('token', data.access_token);
+        })
+        .error(function (data, status, headers, config) {
+            console.error("in error");
+        });
+
+
+
+}
+
+	this.getData = function (filter){
+ 
+	return $http({
+
+				maethod: 'POST', 
+				url: 'http://grandvision-ifair-server.appropo.info/api/top-articles',
+				headers: {'AUTHORIZATION' : 'Bearer ' + sessionStorage.getItem('token')} 
+
+			})
+
+			.success(function(data){
+
+				console.log(data);
+
+			});
+
+		}
+
+ })
+
+.controller('displayModels', ['$scope', 'myService', function ($scope, myService) { 
 		
-// the HTTP request will replace the array below!
-		$scope.models = [
+		
+		console.log("in displayModels");
+		myService.getToken();
+
+		myService.getData("MALE");
+
+
+
+
+
+		/*[
 
 			{model:'Model1', size:'Size S', price:'Price1', logo:'img/glases.jpg', brand:'Brand 1', gender:'Man'},
 			{model:'Model3', size:'Size L', price:'Price1', logo:'img/glases.jpg', brand:'Another Brand', gender:'Woman'},
@@ -50,6 +126,6 @@ angular.module('firstPage', []).controller('displayModels', function($scope){
 		$scope.gender = function(){
 
 
-		}
+		}*/
 
-	});
+	}]);
