@@ -17,7 +17,7 @@
 
 <body>
 
-    <div class="container-fluid">
+    <div class="container-fluid" ng-hide="visible">
 
 	   <header>
 
@@ -75,9 +75,7 @@
     </header>
 	
 
-    <article>
-
-            <div class="row">
+            <div class="row content">
 
                 <div class="col-lg-12" >
 
@@ -85,10 +83,10 @@
 
                         <table>
                             <tbody>
-                                <tr ng-repeat="x in filtered">
+                                <tr ng-repeat="x in mainData">
                 
-                                    <!--<td style="text-align:centre">{{x.model}} <br> {{x.size}} <br>{{x.price}}</td>
-                                    <td style="text-align:centre"><img src= "{{x.logo}}"/></td>-->
+                                    <td style="text-align:centre"><a  ng-click="getModel(x.ean)">{{x.model}} <br> {{x.nose_size}} <br>{{x.purchasing_price}}</a></td>
+                                    <td style="text-align:centre"><img ng-src= "{{x.img}}"/></td>
                       
                                 </tr>
                             </tbody>
@@ -100,10 +98,89 @@
     
             </div>
 
-              
-    </article>
 
 </div>
+
+ <div class="container-fluid" ng-show="visible">
+
+       <header>
+
+            <div class="row">
+                
+               <div class="col-lg-3">
+
+                    <h2> {{modelData.model_number}} </h2>
+
+               </div>
+
+               <div class="col-lg-3">
+
+                    <h2> {{modelData.article.brand_name}} </h2>
+
+               </div>
+
+               <div class="col-lg-3">
+
+                    <h2> {{modelData.article.gender}} </h2>
+
+               </div>
+    
+            </div>
+
+        </header>
+    
+
+            <div class="row infos">
+
+                <div class="col-lg-8 text-center">
+
+                    <img ng-src="{{modelData.article.img_full}}" width='100%' height='100%' />
+
+                </div>
+
+                <div class="col-lg-4 text-center">
+
+                    <h3> {{modelData.article.sub_brand}} </h3>
+                    <h3>  {{modelData.article.model}} / {{modelData.article.color_code}} </h3>
+                    <h3> {{modelData.article.gender}} </h3>
+                    <h3> {{modelData.article.ean}} </h3>
+                    <h3> {{modelData.article.purchasing_price}} </h3>
+                    <h3> {{modelData.article.gv_core_range}} </h3>
+                    <h3> {{modelData.article.carry_over}} </h3>
+                    <h3> {{modelData.article.material_group}} </h3>
+
+                </div>
+    
+            </div>
+
+
+            <div class="row" id="footer">
+
+                <div class="col-lg-4 text-center" id="volumes">
+
+                    <h2> {{modelData.article.moq_sku}} </h2>
+
+                </div>
+
+
+                <div class="col-lg-4 text-center" id="volumes">
+
+                    <h2> {{modelData.article.moq_model}} </h2>
+
+                </div>
+
+                <div class="col-lg-4 text-center">
+
+                   <img src="img/qrcode.jpg" width="240px"  />
+
+                </div>
+    
+            </div>
+
+
+    </div>
+
+
 
 
     <script type="text/javascript" src="js/main.js"></script>

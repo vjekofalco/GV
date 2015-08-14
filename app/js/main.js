@@ -6,10 +6,10 @@ angular.module('firstPage', [])
 
 		return {
 
-			response: function(res) {
+			response: function(req) {
 
 				console.log("in response");
-				return res;
+				return req;
 
 			}
 
@@ -33,7 +33,7 @@ this.getToken = function(){
 	console.log("in getToken");
 
 
-    $http.post("http://grandvision-ifair-server.appropo.info/api/oauth", credentials)
+    return $http.post("http://grandvision-ifair-server.appropo.info/api/oauth", credentials)
         .success(function (data, status, headers, config) {
        
             sessionStorage.setItem('token', data.access_token);
@@ -58,7 +58,26 @@ this.getToken = function(){
 
 			.success(function(data){
 
-				console.log(data);
+				//console.log(data);
+
+			});
+
+		}
+
+
+	this.getModelData = function (model){
+ 
+	return $http({
+
+				maethod: 'GET', 
+				url: 'http://grandvision-ifair-server.appropo.info/api/article-overview/' + model,
+				headers: {'AUTHORIZATION' : 'Bearer ' + sessionStorage.getItem('token')} 
+
+			})
+
+			.success(function(data){
+
+				//console.log(data);
 
 			});
 
@@ -67,12 +86,39 @@ this.getToken = function(){
  })
 
 .controller('displayModels', ['$scope', 'myService', function ($scope, myService) { 
+
+
+		$scope.visible = false ;
 		
 		
 		console.log("in displayModels");
 		myService.getToken();
 
-		myService.getData("MALE");
+		myService.getData().success(function(data){
+
+
+		$scope.mainData = data._embedded.top_articles;
+		console.log(data);
+
+		});
+
+
+		$scope.getModel = function(model) {
+
+			console.log(model);
+			$scope.visible = true;
+
+			myService.getModelData(model).success(function(data){
+
+				
+				$scope.modelData = data;
+				console.log(data);
+				
+
+			});
+
+		}
+
 
 
 
