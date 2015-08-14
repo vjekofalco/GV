@@ -29,7 +29,7 @@ system() {
 
 # Tasks
 # Ensure that the shared, releases and tmp directories exist
-run "mkdir -vm 755 $dpl_to/shared $dpl_to/releases $dpl_to/tmp"
+run "mkdir -vpm 755 $dpl_to/shared $dpl_to/releases $dpl_to/tmp"
 
 # Check if shared resources exist
 # run "[ -f $dpl_to/shared/config/autoload/oauth2.stage.local.php ]"
