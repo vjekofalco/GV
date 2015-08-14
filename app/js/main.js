@@ -8,7 +8,7 @@ angular.module('firstPage', [])
 
 			response: function(req) {
 
-				console.log("in response");
+				console.log("HTTP_Response fetch!" + req);
 				return req;
 
 			}
@@ -30,13 +30,14 @@ angular.module('firstPage', [])
 
 this.getToken = function(){
 
-	console.log("in getToken");
+	console.log("Getting a TOKEN...");
 
 
     return $http.post("http://grandvision-ifair-server.appropo.info/api/oauth", credentials)
         .success(function (data, status, headers, config) {
        
             sessionStorage.setItem('token', data.access_token);
+            console.log("Token successfully fetch!");
         })
         .error(function (data, status, headers, config) {
             console.error("in error");
@@ -46,7 +47,7 @@ this.getToken = function(){
 
 }
 
-	this.getData = function (filter){
+	this.getData = function (){
  
 	return $http({
 
@@ -58,7 +59,7 @@ this.getToken = function(){
 
 			.success(function(data){
 
-				//console.log(data);
+				console.log("Successfully Fetch ALL data!");
 
 			});
 
@@ -77,7 +78,26 @@ this.getToken = function(){
 
 			.success(function(data){
 
-				//console.log(data);
+				console.log("Successfully fetch Model data!");
+
+			});
+
+		}
+
+
+	this.getFilterData = function (filter, value){
+ 
+	return $http({
+
+				maethod: 'GET', 
+				url: 'http://grandvision-ifair-server.appropo.info/api/top-articles?' + filter + '=' + value,
+				headers: {'AUTHORIZATION' : 'Bearer ' + sessionStorage.getItem('token')} 
+
+			})
+
+			.success(function(data){
+
+				console.log("Data sucessfully filtered!");
 
 			});
 
@@ -91,13 +111,15 @@ this.getToken = function(){
 		$scope.visible = false ;
 		
 		
-		console.log("in displayModels");
+		console.log("Starting APP !");
+
 		myService.getToken();
 
 		myService.getData().success(function(data){
 
 
 		$scope.mainData = data._embedded.top_articles;
+		$scope.allData = data;
 		console.log(data);
 
 		});
@@ -120,58 +142,16 @@ this.getToken = function(){
 		}
 
 
+		$scope.filterModels = function (filter, value){
 
+			myService.getFilterData(filter, value).success(function(data){
 
+				$scope.mainData = data._embedded.top_articles;
+				//$scope.allData = data;
 
-
-		/*[
-
-			{model:'Model1', size:'Size S', price:'Price1', logo:'img/glases.jpg', brand:'Brand 1', gender:'Man'},
-			{model:'Model3', size:'Size L', price:'Price1', logo:'img/glases.jpg', brand:'Another Brand', gender:'Woman'},
-			{model:'Model12', size:'Size M', price:'Price1', logo:'img/glases.jpg', brand:'One more Brand', gender:'Man'},
-			{model:'Model4', size:'Size1 XL', price:'Price1', logo:'img/glases.jpg', brand:'Another Brand', gender:'Woman'},
-			{model:'Model5', size:'Size XXL', price:'Price1', logo:'img/glases.jpg', brand:'One more Brand', gender:'Man'},
-			{model:'Model8', size:'Size XS', price:'Price1', logo:'img/glases.jpg', brand:'Another Brand', gender:'Woman'},
-			{model:'Model67', size:'Size M', price:'Price1', logo:'img/glases.jpg', brand:'One more Brand', gender:'Man'},
-			{model:'Model76', size:'Size L', price:'Price1', logo:'img/glases.jpg', brand:'Brand 1', gender:'Woman'},
-			{model:'Model678', size:'Size XXS', price:'Price1', logo:'img/glases.jpg', brand:'One more Brand', gender:'Man'},
-			{model:'Model9', size:'Size XXXL', price:'Price1', logo:'img/glases.jpg', brand:'Another Brand', gender:'Woman'},
-			{model:'Model6', size:'Size L', price:'Price1', logo:'img/glases.jpg', brand:'One more Brand', gender:'Man'},
-			{model:'Model432', size:'Size M', price:'Price1', logo:'img/glases.jpg', brand:'Brand 1', gender:'Woman'},
-
-		];
-
-		$scope.filtered = $scope.models;
-
-		//Function is filtering models arraz
-		$scope.filterModels = function(filter, value) {
-
-			if(!filter || !value) {
-
-				$scope.filtered = $scope.models;
-				return;
-
-			}
-
-			$scope.filtered = $scope.models.filter(function(item){
-
-				return item[filter] == value;
-
-			});
+			})
 
 		}
 
-		//Function is getting all brands for display.
-		$scope.brands = function(){
-
-
-
-		}
-
-		//Function is getting gender for display according the data scope.
-		$scope.gender = function(){
-
-
-		}*/
 
 	}]);
