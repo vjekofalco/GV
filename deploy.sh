@@ -35,7 +35,7 @@ run "mkdir -pvm 755 $dpl_to/shared $dpl_to/releases $dpl_to/tmp"
 # run "[ -f $dpl_to/shared/config/autoload/oauth2.stage.local.php ]"
 
 # Transfer latest build
-system "rsync -avz --delete ./app $dpl_user@$dpl_host:$dpl_to/tmp"
+system "rsync -avz --delete ./* $dpl_user@$dpl_host:$dpl_to/tmp"
 
 # Create new release directory
 run "mkdir -vpm 755 $dpl_to/releases/$dpl_revision"
