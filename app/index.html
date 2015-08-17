@@ -106,32 +106,164 @@
 
             <div class="row content">
 
-                <div class="col-lg-12" >
+                <div class="col-lg-6">
 
-                    <div id="twoColumns">
+                    <div ng-repeat="x in mainData" ng-if="$even">
 
-                        <table>
-                            <tbody>
-                                <tr ng-repeat="x in mainData">
-                
-                                    <td style="text-align:centre"><a  ng-click="getModel(x.ean)">{{x.model}} <br> {{x.nose_size}} <br>{{x.purchasing_price}}</a></td>
-                                    <td style="text-align:centre"><img ng-src= "{{x.img}}"/></td>
-                      
-                                </tr>
-                            </tbody>
-                        </table> 
+                    <div class="row">
+
+                        <div class="col-lg-4">
+
+                            <h2 class="text-center"> {{$index + 1}} </h2>
+
+                        </div>
+
+                        <div class="col-lg-4">
+
+                            <h2 class="text-center"> {{x.brand_name}} </h2>
+
+                        </div>
+
+                        <div class="col-lg-4">
+
+                            <h2 class="text-center"> {{x.gender}} </h2>
+
+                        </div>
+
+                    </div>
+
+                    
+                    <div class="row">
+
+                        <div class="col-lg-8 text-center">
+                            <img ng-src= "{{x.img}}" />
+                        </div>
+
+
+                        <div class="col-lg-4 text-center">
+                             
+                            <h3> {{x.sub_brand}} </h3>
+                            <h3>  {{x.model}} / {{x.color_code}} </h3>
+                            <h3> {{x.gender}} </h3>
+                            <h3> {{x.article.ean}} </h3>
+                            <h3> {{x.purchasing_price}} </h3>
+                            <h3> {{x.gv_core_range}} </h3>
+                            <h3> {{x.carry_over}} </h3>
+                            <h3> {{x.material_group}} </h3>
+
+                        </div>
+
+                    </div>
+
+                     <div class="row">
+
+                        <div class="col-lg-4 text-center" id="volumes">
+
+                            <h2> {{x.moq_sku}} </h2>
+
+                        </div>
+
+
+                        <div class="col-lg-4 text-center" id="volumes">
+
+                            <h2> {{x.moq_model}} </h2>
+
+                        </div>
+
+                        <div class="col-lg-4 text-center">
+
+                            <img src="img/qrcode.jpg" width="240px" class="img-responsive center-block"  />
+
+                        </div>
 
                     </div>
 
                 </div>
+
+                </div>
+
+                 <div class="col-lg-6">
+
+                    <div ng-repeat="x in mainData" ng-if="$odd">
+
+                    <div class="row">
+
+                        <div class="col-lg-4">
+
+                            <h2 class="text-center"> {{$index + 1}} </h2>
+
+                        </div>
+
+                        <div class="col-lg-4">
+
+                            <h2 class="text-center"> {{x.brand_name}} </h2>
+
+                        </div>
+
+                        <div class="col-lg-4">
+
+                            <h2 class="text-center"> {{x.gender}} </h2>
+
+                        </div>
+
+                    </div>
+
+                    
+                    <div class="row">
+
+                        <div class="col-lg-8 text-center">
+                            <img ng-src= "{{x.img}}" />
+                        </div>
+
+
+                        <div class="col-lg-4 text-center">
+                             
+                            <h3> {{x.sub_brand}} </h3>
+                            <h3>  {{x.model}} / {{x.color_code}} </h3>
+                            <h3> {{x.gender}} </h3>
+                            <h3> {{x.article.ean}} </h3>
+                            <h3> {{x.purchasing_price}} </h3>
+                            <h3> {{x.gv_core_range}} </h3>
+                            <h3> {{x.carry_over}} </h3>
+                            <h3> {{x.material_group}} </h3>
+
+                        </div>
+
+                    </div>
+
+                     <div class="row">
+
+                        <div class="col-lg-4 text-center" id="volumes">
+
+                            <h2> {{x.moq_sku}} </h2>
+
+                        </div>
+
+
+                        <div class="col-lg-4 text-center" id="volumes">
+
+                            <h2> {{x.moq_model}} </h2>
+
+                        </div>
+
+                        <div class="col-lg-4 text-center">
+
+                            <img src="img/qrcode.jpg" width="240px" class="img-responsive center-block"  />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
     
             </div>
-
 
 </div>
 
 
-<!-- ***************** productCard ************************** -->
+<!-- ***************** productCard ************************** 
 
 
  <div class="container-fluid" ng-show="visible">
@@ -211,7 +343,7 @@
             </div>
 
 
-    </div>
+    </div>-->
 
 
 

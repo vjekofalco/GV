@@ -68,23 +68,6 @@ this.getToken = function(){ // Getting a token from a server.
 
 	}
 
-	this.getModelData = function (model){ // Collecting data for particular model.
- 
-		return $http({
-
-			maethod: 'GET', 
-			url: 'http://grandvision-ifair-server.appropo.info/api/article-overview/' + model,
-			headers: {'AUTHORIZATION' : 'Bearer ' + sessionStorage.getItem('token')} 
-
-		})
-
-		.success(function(data){
-
-			console.log("Successfully fetch Model data!");
-
-		});
-
-	}
 
 	this.getFilterData = function (filters){ // Filtering function!
  
@@ -104,9 +87,27 @@ this.getToken = function(){ // Getting a token from a server.
 
 	}
 
+		/*this.getModelData = function (model){ // Collecting data for particular model.
+ 
+		return $http({
+
+			maethod: 'GET', 
+			url: 'http://grandvision-ifair-server.appropo.info/api/article-overview/' + model,
+			headers: {'AUTHORIZATION' : 'Bearer ' + sessionStorage.getItem('token')} 
+
+		})
+
+		.success(function(data){
+
+			console.log("Successfully fetch Model data!");
+
+		});
+
+	}*/
+
  })
 
-.controller('displayModels', ['$scope', 'myService', function ($scope, myService) { 
+.controller('displayModels', ['$interval', '$scope', 'myService', function ($interval, $scope, myService) { 
 
 
 		$scope.visible = false ; // Visibility status init!
@@ -116,32 +117,29 @@ this.getToken = function(){ // Getting a token from a server.
 		
 		console.log("Starting APP !");
 
-		myService.getToken();
+		myService.getToken(); 
 
-		myService.getData().success(function(data){
+		$interval (function (){ // Calling the server every 5 seconds!
 
-			$scope.mainData = data._embedded.top_articles;
-			$scope.allData = data;
-			console.log(data);
+			myService.getData().success(function(data){
 
-		});
+				$scope.mainData = data._embedded.top_articles;
+				$scope.allData = data;
 
-		$scope.getModel = function(model) {
-
-			console.log(model);
-
-			$scope.visible = true; // Changing visibility !
-
-			myService.getModelData(model).success(function(data){
-
-				
-				$scope.modelData = data;
+				console.log(Date());
 				console.log(data);
-				
 
-			});
+			}).error(function(data, status){
 
-		}
+				console.log(status);
+				if (status == 403 ){ // Checking if Token is expired! 
+
+					myService.getToken();
+
+				}
+
+		}); }, 5000)
+
 
 		$scope.filterModels = function (filter, value){
 
@@ -200,5 +198,22 @@ this.getToken = function(){ // Getting a token from a server.
 			filtering = "";
 
 		}
+
+		/*$scope.getModel = function(model) {
+
+			console.log(model);
+
+			$scope.visible = true; // Changing visibility !
+
+			myService.getModelData(model).success(function(data){
+
+				
+				$scope.modelData = data;
+				console.log(data);
+				
+
+			});
+
+		}*/
 
 }]);
