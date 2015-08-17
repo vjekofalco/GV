@@ -27,7 +27,7 @@ angular.module('firstPage', [])
         password: 'admin',
         grant_type: 'password',
         client_id: 'ifair-app'
-        
+
         };
 
 this.getToken = function(){ // Getting a token from a server.
@@ -70,39 +70,39 @@ this.getToken = function(){ // Getting a token from a server.
 
 	this.getModelData = function (model){ // Collecting data for particular model.
  
-	return $http({
+		return $http({
 
-				maethod: 'GET', 
-				url: 'http://grandvision-ifair-server.appropo.info/api/article-overview/' + model,
-				headers: {'AUTHORIZATION' : 'Bearer ' + sessionStorage.getItem('token')} 
+			maethod: 'GET', 
+			url: 'http://grandvision-ifair-server.appropo.info/api/article-overview/' + model,
+			headers: {'AUTHORIZATION' : 'Bearer ' + sessionStorage.getItem('token')} 
 
-			})
+		})
 
-			.success(function(data){
+		.success(function(data){
 
-				console.log("Successfully fetch Model data!");
+			console.log("Successfully fetch Model data!");
 
-			});
+		});
 
-		}
+	}
 
 	this.getFilterData = function (filters){ // Filtering function!
  
-	return $http({
+		return $http({
 
-				maethod: 'GET', 
-				url: 'http://grandvision-ifair-server.appropo.info/api/top-articles?' + filters,
-				headers: {'AUTHORIZATION' : 'Bearer ' + sessionStorage.getItem('token')} 
+			maethod: 'GET', 
+			url: 'http://grandvision-ifair-server.appropo.info/api/top-articles?' + filters,
+			headers: {'AUTHORIZATION' : 'Bearer ' + sessionStorage.getItem('token')} 
 
-			})
+		})
 
-			.success(function(data){
+		.success(function(data){
 
-				console.log("Data sucessfully filtered!");
+			console.log("Data sucessfully filtered!");
 
-			});
+		});
 
-		}
+	}
 
  })
 
@@ -110,9 +110,9 @@ this.getToken = function(){ // Getting a token from a server.
 
 
 		$scope.visible = false ; // Visibility status init!
-		var filters = ""; // Variable for storing filter status.
-		var lastFiltered; // Storing data from the last filter for the back function.
-		
+		var filters = []; // Variable for storing filter status.
+		var filtering = ""; // Storing data from the last filter for the back function.
+		var i = "";
 		
 		console.log("Starting APP !");
 
@@ -145,18 +145,16 @@ this.getToken = function(){ // Getting a token from a server.
 
 		$scope.filterModels = function (filter, value){
 
-			
-			if (filters != "") {
+			filters[filters.length] = { filterName:filter , filterValue:value } ;			
 
-				filters += "&";
-				lastFiltered = "&";
+			for(i = 0; i<filters.length; i++){
+
+				filtering += filters[i]['filterName'] + "=" + filters[i]['filterValue'] + "&";
+				console.log(filtering);
 
 			}
 
-			filters += filter + "=" + value
-			lastFiltered += filter + "=" + value
-
-			myService.getFilterData(filters).success(function(data){
+			myService.getFilterData(filtering).success(function(data){
 
 				$scope.mainData = data._embedded.top_articles;
 				$scope.allData = data;
@@ -165,19 +163,41 @@ this.getToken = function(){ // Getting a token from a server.
 
 			});
 
+			filtering = "";
+
 		}
 
-		$scope.back = function(){
+		$scope.back = function(back){
 
-			filters = filters.substring(0, filters.length - lastFiltered.length);
+			for(i = 0; i<filters.length; i++){
+
+				if( filters[i]['filterName'] == back ) {
+
+					filters.splice(i, 1);
+
+				};
+
+			}
+
 			console.log(filters);
 
-			myService.getFilterData(filters).success(function(data){
+			for(i = 0; i<filters.length; i++){
+
+				filtering += filters[i]['filterName'] + "=" + filters[i]['filterValue'] + "&";
+				console.log(filtering);
+
+			}
+
+			myService.getFilterData(filtering).success(function(data){
 
 				$scope.mainData = data._embedded.top_articles;
 				$scope.allData = data;
 
+				console.log(data);
+
 			});
+
+			filtering = "";
 
 		}
 

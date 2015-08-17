@@ -41,7 +41,7 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Brand<strong class="caret"></strong></a>
                                     <ul class="dropdown-menu">
                                         <li >
-                                            <a href="" ng-click="back()"> Brand </a>
+                                            <a href="" ng-click="back('brand')"> Brand </a>
                                         </li>
                                         <li ng-repeat="brandName in allData.brand">
                                             <a ng-click="filterModels('brand', brandName)">{{brandName}}</a>
@@ -54,7 +54,7 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gender<strong class="caret"></strong></a>
                                     <ul class="dropdown-menu">
                                         <li >
-                                            <a href="" ng-click="back()"> Gender </a>
+                                            <a href="" ng-click="back('gender')"> Gender </a>
                                         </li>
                                         <li ng-repeat="genderType in allData.gender">
                                             <a ng-click="filterModels('gender', genderType)">{{genderType}}</a>
@@ -67,7 +67,7 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">GV_Core<strong class="caret"></strong></a>
                                     <ul class="dropdown-menu">
                                         <li >
-                                            <a href="" ng-click="back()"> GV_Core </a>
+                                            <a href="" ng-click="back('gv_core_range')"> GV_Core </a>
                                         </li>
                                         <li ng-repeat="gvCore in allData.gv_core_range">
                                             <a ng-click="filterModels('gv_core_range', gvCore)">{{gvCore}}</a>
@@ -80,7 +80,7 @@
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Material<strong class="caret"></strong></a>
                                     <ul class="dropdown-menu">
                                         <li >
-                                            <a href="" ng-click="back()"> Material </a>
+                                            <a href="" ng-click="back('material')"> Material </a>
                                         </li>
                                         <li ng-repeat="materialType in allData.material">
                                             <a ng-click="filterModels('material', materialType)">{{materialType}}</a>
