@@ -132,7 +132,7 @@ this.getToken = function(){ // Getting a token from a server.
 			}).error(function(data, status){
 
 				console.log(status);
-				if (status == 403 ){ // Checking if Token is expired! 
+				if (status == 403 || status == 401){ // Checking if Token is expired! 
 
 					myService.getToken();
 
