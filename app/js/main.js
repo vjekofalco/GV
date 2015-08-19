@@ -23,8 +23,8 @@ angular.module('firstPage', [])
 
 	var credentials = {
 
-        username: 'admin', 
-        password: 'admin',
+        username: config.username, 
+        password: config.password,
         grant_type: 'password',
         client_id: 'ifair-app'
 
@@ -35,7 +35,7 @@ this.getToken = function(){ // Getting a token from a server.
 	console.log("Getting a TOKEN...");
 
 
-    return $http.post("http://grandvision-ifair-server.appropo.info/api/oauth", credentials)
+    return $http.post(config.tokenURL, credentials)
         .success(function (data, status, headers, config) {
        
             sessionStorage.setItem('token', data.access_token);
@@ -51,12 +51,12 @@ this.getToken = function(){ // Getting a token from a server.
 
 }
 
-	this.getData = function (){ // Initial server call collecting tom articles.
+	this.getData = function (filters){ // Initial server call collecting tom articles.
  
 		return $http({
 
 			maethod: 'POST', 
-			url: 'http://grandvision-ifair-server.appropo.info/api/top-articles',
+			url: config.dataURL + filters,
 			headers: {'AUTHORIZATION' : 'Bearer ' + sessionStorage.getItem('token')} 
 
 		})
@@ -69,7 +69,7 @@ this.getToken = function(){ // Getting a token from a server.
 	}
 
 
-	this.getFilterData = function (filters){ // Filtering function!
+	/*this.getFilterData = function (filters){ // Filtering function!
  
 		return $http({
 
@@ -85,7 +85,7 @@ this.getToken = function(){ // Getting a token from a server.
 
 		});
 
-	}
+	}*/
 
 		/*this.getModelData = function (model){ // Collecting data for particular model.
  
@@ -121,10 +121,19 @@ this.getToken = function(){ // Getting a token from a server.
 
 		$interval (function (){ // Calling the server every 5 seconds!
 
-			myService.getData().success(function(data){
+			for(i = 0; i<filters.length; i++){
+
+				filtering += filters[i]['filterName'] + "=" + filters[i]['filterValue'] + "&";
+				console.log(filtering);
+
+			}
+
+			myService.getData(filtering).success(function(data){
 
 				$scope.mainData = data._embedded.top_articles;
 				$scope.allData = data;
+
+				filtering = " ";
 
 				console.log(Date());
 				console.log(data);
@@ -133,6 +142,8 @@ this.getToken = function(){ // Getting a token from a server.
 
 				console.log(status);
 				if (status == 403 || status == 401){ // Checking if Token is expired! 
+
+					filtering = " ";
 
 					myService.getToken();
 
@@ -152,7 +163,7 @@ this.getToken = function(){ // Getting a token from a server.
 
 			}
 
-			myService.getFilterData(filtering).success(function(data){
+			myService.getData(filtering).success(function(data){
 
 				$scope.mainData = data._embedded.top_articles;
 				$scope.allData = data;
@@ -161,7 +172,8 @@ this.getToken = function(){ // Getting a token from a server.
 
 			});
 
-			filtering = "";
+			filtering = " ";
+			console.log(filtering);
 
 		}
 
@@ -186,7 +198,7 @@ this.getToken = function(){ // Getting a token from a server.
 
 			}
 
-			myService.getFilterData(filtering).success(function(data){
+			myService.getData(filtering).success(function(data){
 
 				$scope.mainData = data._embedded.top_articles;
 				$scope.allData = data;
@@ -195,7 +207,9 @@ this.getToken = function(){ // Getting a token from a server.
 
 			});
 
-			filtering = "";
+			filtering = " ";
+			console.log(filtering + "Filter REMOVED");
+
 
 		}
 
