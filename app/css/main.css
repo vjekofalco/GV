@@ -39,7 +39,17 @@
 
 #itemWrapper:{
 
-	 box-shadow: 0 0 5px #F3F9FF inset;
+	 box-shadow: 1px 1px 5px #F3F9FF inset;
+
+}
+
+h3 label{
+	color: #a06551;
+}
+
+h2 label{
+
+	color: #314b6d;
 
 }
 

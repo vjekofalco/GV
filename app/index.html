@@ -17,7 +17,7 @@
    
 <!-- ************************ First Page ************************ -->
 
-    <div class="container-fluid" ng-hide="visible">
+    <div class="container-fluid">
 
 	   <header>
 
@@ -148,14 +148,13 @@
 
                         <div class="col-lg-4 text-center">
                              
-                            <h3> {{x.sub_brand}} </h3>
-                            <h3>  {{x.model}} / {{x.color_code}} </h3>
-                            <h3> {{x.gender}} </h3>
-                            <h3> {{x.article.ean}} </h3>
-                            <h3> {{x.purchasing_price}} </h3>
-                            <h3> {{x.gv_core_range}} </h3>
-                            <h3> {{x.carry_over}} </h3>
-                            <h3> {{x.material_group}} </h3>
+                           <h3> <label>Sub Brand:</label> {{x.sub_brand}} </h3>
+                           <h3> <label>Color Code:</label> {{x.model}} / {{x.color_code}} </h3>
+                           <h3> <label>Article EAN:</label> {{x.ean}} </h3>
+                           <h3> <label>Purchasing Price:</label> {{x.purchasing_price}} </h3>
+                           <h3 ng-show="x.gv_core_range != 'NO'"> <label>GV Core Range:</label> {{x.gv_core_range}} </h3>
+                           <h3> <label>Carry Over:</label> {{x.carry_over}} </h3>
+                           <h3> <label>Material group:</label> {{x.material_group}} </h3>
 
                         </div>
 
@@ -165,7 +164,7 @@
 
                         <div class="col-lg-4 text-center" id="volumes">
 
-                            <h2 class="center"> {{x.total_orders}} </h2>
+                            <h2 class="center"> <label>QTY Model:</label> {{x.total_orders}} </h2>
 
                         </div>
 
@@ -230,14 +229,13 @@
 
                         <div class="col-lg-4 text-center">
                              
-                            <h3> {{x.sub_brand}} </h3>
-                            <h3>  {{x.model}} / {{x.color_code}} </h3>
-                            <h3> {{x.gender}} </h3>
-                            <h3> {{x.article.ean}} </h3>
-                            <h3> {{x.purchasing_price}} </h3>
-                            <h3> {{x.gv_core_range}} </h3>
-                            <h3> {{x.carry_over}} </h3>
-                            <h3> {{x.material_group}} </h3>
+                           <h3> <label>Sub Brand:</label> {{x.sub_brand}} </h3>
+                           <h3> <label>Color Code:</label> {{x.model}} / {{x.color_code}} </h3>
+                           <h3> <label>Article EAN:</label> {{x.ean}} </h3>
+                           <h3> <label>Purchasing Price:</label> {{x.purchasing_price}} </h3>
+                           <h3 ng-show="x.gv_core_range != 'NO'"> <label>GV Core Range:</label> {{x.gv_core_range}} </h3>
+                           <h3> <label>Carry Over:</label> {{x.carry_over}} </h3>
+                           <h3> <label>Material group:</label> {{x.material_group}} </h3>
 
                         </div>
 
@@ -247,7 +245,7 @@
 
                         <div class="col-lg-4 text-center" id="volumes">
 
-                            <h2 class="center-block"> {{x.total_orders}} </h2>
+                            <h2 class="center-block"><label>QTY Model:</label> {{x.total_orders}} </h2>
 
                         </div>
 
