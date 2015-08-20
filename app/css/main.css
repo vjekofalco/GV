@@ -1,58 +1,74 @@
-
-#footer{
-		position: absolute;
-		display: block;
-		overflow: auto;
-        bottom: 0;
-        width: 100%
-       }
-
 .content{
 	margin-top: 120px;
 }
 
 #circle {
-	background: #AFC2DC;
+	background: #72727A;
 	border-radius:50%;
-	color: black;
 	display:table;
-	height: 19px;
-	min-width: 19px;
-	font-size: 15px;
-	width: auto;
+	height: 40px;
+	min-width: 40px;
+	font-size: 30px;
 	margin:0 auto;
-	margin-top: 2px;
-	margin-bottom: 1px;
-	color: #1E53A3;
+	margin-top: 10px;
+	margin-bottom: 2px;
+	color:#000000;
+	float: left;
+	margin-left: 10px;
 }
+
 #circle span {
 	display:table-cell;
 	vertical-align:middle;
 	height:20px;
 	width:20px;
 	text-align:center;
+	font-weight:700;
+	line-height:1.3;
 }
 
 #volumes{
-	margin-top: 42px;
+	margin-top: 40px;
 }
 
-#itemWrapper:{
+#itemWrapper{
+	 border: 1px solid #a3a3a3;
+	 box-shadow: 3px 3px 3px #b7b7b7;
+	 min-width: 323px;
+	 width: auto !important; 
+}
 
-	 box-shadow: 1px 1px 5px #F3F9FF inset;
-
+#logo{
+	padding-right: 20px;
 }
 
 h3 label{
-	color: #a06551;
+	color: #727272;
 }
 
 h2 label{
-
-	color: #314b6d;
-
+	color: #727272;
 }
 
+h3{
+	display: inline;
+}
+
+#itemPic{
+	height: 100%;
+	width:100%;
+	object-fit: contain;
+}
+
+#itemDataHolder{
+	height: 135px;
+	padding-top: 10px;
+}
+
+#USD{
+	position: relative;
+	left: 50%;
+}
 
 
 

@@ -89,7 +89,7 @@
                                 </li>
                             </ul>
                             
-                            <img src="img/logo_grandvision.png" class="pull-right" />
+                            <img src="img/logo_grandvision.png" class="pull-right" id="logo" />
                 
                         </div>
                  
@@ -117,7 +117,7 @@
 
                         <div class="col-lg-4">
 
-                            <h2 class="text-center" id="circle"><span> {{$index + 1}} </span></h2>
+                            <h2 id="circle"><span> {{$index + 1}} </span></h2>
 
                         </div>
 
@@ -138,23 +138,25 @@
                     
                     <div class="row">
 
-                        <div class="col-lg-4 text-center">
-                            <img ng-src= "{{x.img}}" />
+                        <div class="col-lg-4 text-center" id="itemDataHolder">
+                            <img ng-src= "{{x.img}}" class="img-thumbnail img-responsive" id="itemPic" />
                         </div>
 
-                        <div class="col-lg-4 text-center">
+                        <div class="col-lg-4" id="itemDataHolder">
+
+                           <h3> <label>Model:</label> {{x.model}} </h3><br>
+                           <h3> <label>Lifecycle:</label> {{x.carry_over}} </h3><br>
+                           <h3> <label>Size:</label> {{x.size}} </h3><br>
+                           <h3> <label>InterCo Price:</label> {{x.inter_co_price_eu}}   <span id="USD">{{x.inter_co_price_latam}}</span></h3>
                            
                         </div>
 
-                        <div class="col-lg-4 text-center">
+                        <div class="col-lg-4" id="itemDataHolder">
                              
+                           <h3 ng-show="x.gv_core_range!='NO'"> <label>GV Core Range: </label>  &nbsp; <h3 ng-if="x.gv_core_range=='GLOBAL'" style="color:red;font-weight: bold;"> {{x.gv_core_range}}<br></h3><h3 ng-if="x.gv_core_range=='REGIONAL'" style="font-weight: bold;"> {{x.gv_core_range}}<br></h3> </h3>
+                           <h3> <label>Material group:</label> {{x.material_group}} </h3><br>
                            <h3> <label>Sub Brand:</label> {{x.sub_brand}} </h3>
-                           <h3> <label>Color Code:</label> {{x.model}} / {{x.color_code}} </h3>
-                           <h3> <label>Article EAN:</label> {{x.ean}} </h3>
-                           <h3> <label>Purchasing Price:</label> {{x.purchasing_price}} </h3>
-                           <h3 ng-show="x.gv_core_range != 'NO'"> <label>GV Core Range:</label> {{x.gv_core_range}} </h3>
-                           <h3> <label>Carry Over:</label> {{x.carry_over}} </h3>
-                           <h3> <label>Material group:</label> {{x.material_group}} </h3>
+                           <!--<h3> <label>InterCo Price USD:</label> {{x.inter_co_price_latam}} </h3>-->
 
                         </div>
 
@@ -178,6 +180,7 @@
                         <div class="col-lg-4 text-center">
 
                             <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />
+                            <h3> <label>Article EAN:</label> {{x.ean}} </h3>
 
                         </div>
 
@@ -198,7 +201,7 @@
 
                         <div class="col-lg-4">
 
-                            <h2 class="text-center" id="circle"><span> {{$index + 1}} </span></h2>
+                            <h2 id="circle"><span> {{$index + 1}} </span></h2>
 
                         </div>
 
@@ -219,23 +222,25 @@
                     
                     <div class="row">
 
-                        <div class="col-lg-4 text-center">
-                            <img ng-src= "{{x.img}}" />
+                        <div class="col-lg-4 text-center" id="itemDataHolder">
+                            <img ng-src= "{{x.img}}" class="img-thumbnail img-responsive" id="itemPic" />
                         </div>
 
-                        <div class="col-lg-4 text-center">
-                            
+                        <div class="col-lg-4" id="itemDataHolder">
+
+                           <h3> <label>Model:</label> {{x.model}} </h3><br>
+                           <h3> <label>Lifecycle:</label> {{x.carry_over}} </h3><br>
+                           <h3> <label>Size:</label> {{x.size}} </h3><br>
+                           <h3> <label>InterCo Price:</label> {{x.inter_co_price_eu}}   <span id="USD">{{x.inter_co_price_latam}}</span></h3>
+                           
                         </div>
 
-                        <div class="col-lg-4 text-center">
+                        <div class="col-lg-4" id="itemDataHolder">
                              
+                           <h3 ng-show="x.gv_core_range!='NO'"> <label>GV Core Range: </label>  &nbsp; <h3 ng-if="x.gv_core_range=='GLOBAL'" style="color:red;font-weight: bold;"> {{x.gv_core_range}}<br></h3><h3 ng-if="x.gv_core_range=='REGIONAL'" style="font-weight: bold;"> {{x.gv_core_range}}<br></h3> </h3>
+                           <h3> <label>Material group:</label> {{x.material_group}} </h3><br>
                            <h3> <label>Sub Brand:</label> {{x.sub_brand}} </h3>
-                           <h3> <label>Color Code:</label> {{x.model}} / {{x.color_code}} </h3>
-                           <h3> <label>Article EAN:</label> {{x.ean}} </h3>
-                           <h3> <label>Purchasing Price:</label> {{x.purchasing_price}} </h3>
-                           <h3 ng-show="x.gv_core_range != 'NO'"> <label>GV Core Range:</label> {{x.gv_core_range}} </h3>
-                           <h3> <label>Carry Over:</label> {{x.carry_over}} </h3>
-                           <h3> <label>Material group:</label> {{x.material_group}} </h3>
+                           <!--<h3> <label>InterCo Price USD:</label> {{x.inter_co_price_latam}} </h3>-->
 
                         </div>
 
@@ -258,7 +263,8 @@
 
                         <div class="col-lg-4 text-center">
 
-                            <img src="img/qrcode.jpg" width="120px" class="img-responsive center-block"  />
+                            <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />
+                            <h3> <label>Article EAN:</label> {{x.ean}} </h3>
 
                         </div>
 
