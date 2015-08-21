@@ -2,6 +2,10 @@
 	margin-top: 120px;
 }
 
+.center-block { display: block;
+  margin-left: auto;
+  margin-right: auto;}
+
 #circle {
 	background: #72727A;
 	border-radius:50%;
@@ -34,8 +38,6 @@
 #itemWrapper{
 	 border: 1px solid #a3a3a3;
 	 box-shadow: 3px 3px 3px #b7b7b7;
-	 min-width: 323px;
-	 width: auto !important; 
 }
 
 #logo{
@@ -65,10 +67,19 @@ h3{
 	padding-top: 10px;
 }
 
-#USD{
-	position: relative;
-	left: 50%;
+#EAN{
+	margin-left: 10px;
+	margin-top: 20px;
+} 
+
+.checkbox-inline{
+	color: #275BA3;
 }
+
+#itemsHolder{
+	/*min-width: 755px !important;*/
+}
+
 
 
 
