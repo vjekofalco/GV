@@ -91,7 +91,8 @@
                         </ul>
                         <ul class="nav navbar-nav">
                             <li>
-                                <label class="checkbox-inline" for="EAN">EAN</label><input type="checkbox" value="" name="EAN" id="EAN" />
+                                <label class="checkbox-inline" for="EAN">EAN</label>
+                                <input type="checkbox" ng-model="EANCheckbox" ng-click="EANCheckboxFunc()" value="" name="EAN" id="EAN" />
                             </li>
                         </ul>
            
@@ -243,7 +244,7 @@
 
                         </div>
 
-                        <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                        <div class="col-lg-4 col-md-4 col-sm-4 text-center" id="QRCodeHolder">
 
                             <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />
                             <h3> <label>Article EAN:</label> {{x.ean}} </h3>
@@ -384,7 +385,7 @@
 
                         </div>
 
-                        <div class="col-lg-4 col-md-4 col-sm-4 text-center">
+                        <div class="col-lg-4 col-md-4 col-sm-4 text-center" id="QRCodeHolder">
 
                             <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />
                             <h3> <label>Article EAN:</label> {{x.ean}} </h3>

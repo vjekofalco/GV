@@ -51,12 +51,19 @@ this.getToken = function(){ // Getting a token from a server.
 
 }
 
-	this.getData = function (filters){ // Initial server call collecting tom articles.
+	this.getData = function (api, filters){ // Initial server call collecting tom articles.
  
+		if(api == true){
+			var endpoint = config.dataEAN;
+		}
+		else{
+			var endpoint = config.dataURL;
+		}
+
 		return $http({
 
 			maethod: 'POST', 
-			url: config.dataURL + filters,
+			url: endpoint + filters,
 			headers: {'AUTHORIZATION' : 'Bearer ' + sessionStorage.getItem('token')} 
 
 		})
@@ -110,6 +117,7 @@ this.getToken = function(){ // Getting a token from a server.
 .controller('displayModels', ['$interval', '$scope', 'myService', function ($interval, $scope, myService) { 
 
 
+		$scope.EANCheckbox = false ; // Setting the EAN sorting to false on initial load.
 		$scope.visible = false ; // Visibility status init!
 		var filters = []; // Variable for storing filter status.
 		var filtering = ""; // Storing data from the last filter for the back function.
@@ -128,14 +136,16 @@ this.getToken = function(){ // Getting a token from a server.
 
 			}
 
-			myService.getData(filtering).success(function(data){
+			myService.getData($scope.EANCheckbox, filtering).success(function(data){
 
-				$scope.mainData = data._embedded.top_articles;
+				$scope.makeMainData(data);
+
 				$scope.allData = data;
 
 				filtering = " ";
 
 				console.log(Date());
+				console.log("EAN Checkbox state: " + $scope.EANCheckbox);
 				console.log(data);
 
 			}).error(function(data, status){
@@ -163,9 +173,9 @@ this.getToken = function(){ // Getting a token from a server.
 
 			}
 
-			myService.getData(filtering).success(function(data){
+			myService.getData($scope.EANCheckbox, filtering).success(function(data){
 
-				$scope.mainData = data._embedded.top_articles;
+				$scope.makeMainData(data);
 				$scope.allData = data;
 
 				console.log(data);
@@ -198,9 +208,9 @@ this.getToken = function(){ // Getting a token from a server.
 
 			}
 
-			myService.getData(filtering).success(function(data){
+			myService.getData($scope.EANCheckbox, filtering).success(function(data){
 
-				$scope.mainData = data._embedded.top_articles;
+				$scope.makeMainData(data);
 				$scope.allData = data;
 
 				console.log(data);
@@ -210,6 +220,68 @@ this.getToken = function(){ // Getting a token from a server.
 			filtering = " ";
 			console.log(filtering + "Filter REMOVED");
 
+
+		}
+
+		$scope.makeMainData = function(data){
+
+			if(data._embedded.top_articles){
+
+				$scope.mainData = data._embedded.top_articles;
+
+				}
+				else if(data._embedded.top_models)
+				{
+					$scope.mainData = new Array;
+
+					for(var i=0; i<data._embedded.top_models.length; i++){
+						for(var j=0; j<data._embedded.top_models[i].articles.length; j++){
+
+							//console.log("Article lenght:" + data._embedded.top_models[i].articles.length);
+							$scope.mainData[$scope.mainData.length] = data._embedded.top_models[i].articles[j];
+							//console.log($scope.mainData);
+
+						}
+					}
+					console.log("Displaying Model Datas! Scope lenght:" + data._embedded.top_models.length);
+					console.log($scope.mainData);
+				}
+
+		}
+
+		$scope.EANCheckboxFunc = function(){
+
+			for(i = 0; i<filters.length; i++){
+
+				filtering += filters[i]['filterName'] + "=" + filters[i]['filterValue'] + "&";
+				console.log(filtering);
+
+			}
+
+			myService.getData($scope.EANCheckbox, filtering).success(function(data){
+
+				$scope.makeMainData(data);
+
+				$scope.allData = data;
+
+				filtering = " ";
+
+				console.log(Date());
+				console.log("EAN Checkbox state: " + $scope.EANCheckbox);
+				console.log(data);
+
+			}).error(function(data, status){
+
+				console.log(status);
+				if (status == 403 || status == 401){ // Checking if Token is expired! 
+
+					filtering = " ";
+
+					myService.getToken();
+
+				}
+
+			});
 
 		}
 

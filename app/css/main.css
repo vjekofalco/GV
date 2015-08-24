@@ -79,6 +79,9 @@ h3{
 #itemsHolder{
 	/*min-width: 755px !important;*/
 }
+#QRCodeHolder{
+	min-height: 135px;
+}
 
 
 
