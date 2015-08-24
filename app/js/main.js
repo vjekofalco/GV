@@ -117,8 +117,15 @@ this.getToken = function(){ // Getting a token from a server.
 .controller('displayModels', ['$interval', '$scope', 'myService', function ($interval, $scope, myService) { 
 
 
+		$scope.navHeadings = {
+
+			"brand": "Brand",
+			"gender": "Gender",
+			"gv_core": "GV_Core",
+			"material": "Material"
+
+		}
 		$scope.EANCheckbox = false ; // Setting the EAN sorting to false on initial load.
-		$scope.visible = false ; // Visibility status init!
 		var filters = []; // Variable for storing filter status.
 		var filtering = ""; // Storing data from the last filter for the back function.
 		var i = "";
@@ -249,8 +256,9 @@ this.getToken = function(){ // Getting a token from a server.
 
 		}
 
-		$scope.EANCheckboxFunc = function(){
+		$scope.EANCheckboxfunction = function(){
 
+			//console.log("New checkbox status:" + $scope.EANCheckbox);
 			for(i = 0; i<filters.length; i++){
 
 				filtering += filters[i]['filterName'] + "=" + filters[i]['filterValue'] + "&";
@@ -281,7 +289,7 @@ this.getToken = function(){ // Getting a token from a server.
 
 				}
 
-			});
+		});
 
 		}
 
