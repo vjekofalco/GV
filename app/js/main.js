@@ -30,26 +30,25 @@ angular.module('firstPage', [])
 
         };
 
-this.getToken = function(){ // Getting a token from a server.
+	this.getToken = function(){ // Getting a token from a server.
 
-	console.log("Getting a TOKEN...");
+		console.log("Getting a TOKEN...");
 
-
-    return $http.post(config.tokenURL, credentials)
-        .success(function (data, status, headers, config) {
+	    return $http.post(config.tokenURL, credentials)
+    	    .success(function (data, status, headers, config) {
        
-            sessionStorage.setItem('token', data.access_token);
+        	    sessionStorage.setItem('token', data.access_token);
 
-            console.log("Token successfully fetch!");
+            	console.log("Token successfully fetch!");
 
-        })
-        .error(function (data, status, headers, config) {
+        	})
+        	.error(function (data, status, headers, config) {
 
-            console.error("Error during token fetching : " + headers);
+            	console.error("Error during token fetching : " + headers);
 
-        });
+        	});
 
-}
+	}
 
 	this.getData = function (api, filters){ // Initial server call collecting tom articles.
  
@@ -75,44 +74,7 @@ this.getToken = function(){ // Getting a token from a server.
 
 	}
 
-
-	/*this.getFilterData = function (filters){ // Filtering function!
- 
-		return $http({
-
-			maethod: 'GET', 
-			url: 'http://grandvision-ifair-server.appropo.info/api/top-articles?' + filters,
-			headers: {'AUTHORIZATION' : 'Bearer ' + sessionStorage.getItem('token')} 
-
-		})
-
-		.success(function(data){
-
-			console.log("Data sucessfully filtered!");
-
-		});
-
-	}*/
-
-		/*this.getModelData = function (model){ // Collecting data for particular model.
- 
-		return $http({
-
-			maethod: 'GET', 
-			url: 'http://grandvision-ifair-server.appropo.info/api/article-overview/' + model,
-			headers: {'AUTHORIZATION' : 'Bearer ' + sessionStorage.getItem('token')} 
-
-		})
-
-		.success(function(data){
-
-			console.log("Successfully fetch Model data!");
-
-		});
-
-	}*/
-
- })
+})
 
 .controller('displayModels', ['$interval', '$scope', 'myService', function ($interval, $scope, myService) { 
 
@@ -125,6 +87,7 @@ this.getToken = function(){ // Getting a token from a server.
 			"material": "Material"
 
 		}
+
 		$scope.EANCheckbox = false ; // Setting the EAN sorting to false on initial load.
 		var filters = []; // Variable for storing filter status.
 		var filtering = ""; // Storing data from the last filter for the back function.
@@ -151,8 +114,7 @@ this.getToken = function(){ // Getting a token from a server.
 
 				filtering = " ";
 
-				console.log(Date());
-				console.log("EAN Checkbox state: " + $scope.EANCheckbox);
+				console.log(Date() + "  EAN Checkbox state: " + $scope.EANCheckbox);
 				console.log(data);
 
 			}).error(function(data, status){
@@ -166,7 +128,9 @@ this.getToken = function(){ // Getting a token from a server.
 
 				}
 
-		}); }, 5000)
+			}); 
+
+		}, 5000)
 
 
 		$scope.filterModels = function (filter, value){
@@ -293,21 +257,90 @@ this.getToken = function(){ // Getting a token from a server.
 
 		}
 
-		/*$scope.getModel = function(model) {
+}]).directive('itemData', function() {
 
-			console.log(model);
+	return {
+		restrict: 'E',
+		template: '<div class="row">\
+                        <div class="col-xs-2 col-lg-2 col-md-2 col-sm-2">\
+                            <h2 id="circle"><span> {{$index + 1}} </span></h2>\
+                        </div>\
+                        <div class="col-xs-6 col-lg-5 col-md-5 col-sm-5">\
+                            <h2 class="text-center"> {{x.brand_name}} </h2>\
+                        </div>\
+                        <div class="col-xs-4 col-lg-5 col-md-5 col-sm-5">\
+                            <h2 class="text-center"> {{x.gender}} </h2>\
+                        </div>\
+                    </div>\
+                    <div class="row hidden-xs">\
+                        <div class="col-lg-4 col-md-4 col-sm-4 text-center" id="itemDataHolder">\
+                            <img ng-src= "{{x.img}}" class="img-thumbnail img-responsive" id="itemPic" />\
+                        </div>\
+                        <div class="col-lg-4 col-md-4 col-sm-4" id="itemDataHolder">\
+                           <h3> <label>Model:</label> {{x.model}} </h3><br>\
+                           <h3> <label>Lifecycle:</label> {{x.carry_over}} </h3><br>\
+                           <h3> <label>Size:</label> {{x.size}} </h3><br>\
+                           <h3> <label>ICo Price:</label> {{x.inter_co_price_eu}}<span class="pull-right">{{x.inter_co_price_latam}}</span></h3>\
+                           </div>\
+                        <div class="col-lg-4 col-md-4 col-sm-4" id="itemDataHolder">\
+                        <h3 ng-show=x.gv_core_range!="NO"> <label>GV Core Range: </label>  &nbsp; <h3 ng-if=x.gv_core_range=="GLOBAL" style="color:red;font-weight: bold;"> {{x.gv_core_range}}<br></h3><h3 ng-if=x.gv_core_range=="REGIONAL" style="font-weight: bold;"> {{x.gv_core_range}}<br></h3> </h3>\
+                           <h3> <label>Material group:</label> {{x.material_group}} </h3><br>\
+                           <h3> <label>Sub Brand:</label> {{x.sub_brand}} </h3>\
+                        </div>\
+                    </div>\
+                     <div class="row hidden-xs">\
+                        <div class="col-lg-4 col-md-4 col-sm-4 text-center" id="volumes">\
+                            <h2 class="center"> <label>QTY Model:</label> {{x.total_orders}} </h2>\
+                        </div>\
+                        <div class="col-lg-4 col-md-4 col-sm-4 text-center" id="volumes">\
+                            <h2 class="center"> {{x.moq_model}} </h2>\
+                        </div>\
+                        <div class="col-lg-4 col-md-4 col-sm-4 text-center" id="QRCodeHolder">\
+                            <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
+                            <h3> <label>Article EAN:</label> {{x.ean}} </h3>\
+                        </div>\
+                    </div>' 
 
-			$scope.visible = true; // Changing visibility !
+	};
 
-			myService.getModelData(model).success(function(data){
+}).directive('smallScreens', function() {
 
-				
-				$scope.modelData = data;
-				console.log(data);
-				
+	return {
 
-			});
+		restrict: 'E',
+		template: '<div class="row visible-xs">\
+                        <div class="col-xs-2">\
+                        </div>\
+                        <div class="col-xs-8" id="itemDataHolder">\
+                            <img ng-src= "{{x.img}}" class="img-thumbnail img-responsive" id="itemPic" />\
+                        </div>\
+                        <div class="col-xs-2">\
+                        </div>\
+                    </div>\
+                    <div class="row visible-xs">\
+                        <div class="col-xs-12 text-center" id="itemDataHolder">\
+                           <h3> <label>Model:</label> {{x.model}} </h3><br>\
+                           <h3> <label>Lifecycle:</label> {{x.carry_over}} </h3><br>\
+                           <h3> <label>Size:</label> {{x.size}} </h3><br>\
+                           <h3> <label>ICo Price:</label> {{x.inter_co_price_eu}}  &nbsp;&nbsp; <span>   {{x.inter_co_price_latam}}</span></h3><br>\
+                           <h3 ng-show=x.gv_core_range!="NO"> <label>GV Core Range: </label>  &nbsp; <h3 ng-if=x.gv_core_range=="GLOBAL" style="color:red;font-weight: bold;"> {{x.gv_core_range}}<br></h3><h3 ng-if=x.gv_core_range=="REGIONAL" style="font-weight: bold;"> {{x.gv_core_range}}<br></h3> </h3>\
+                           <h3> <label>Material group:</label> {{x.material_group}} </h3><br>\
+                           <h3> <label>Sub Brand:</label> {{x.sub_brand}} </h3>\
+                        </div>\
+                    </div>\
+                    <div class="row visible-xs">\
+                        <div class="col-xs-12 text-center" id="volumes">\
+                            <h2> <label>QTY Model:</label> {{x.total_orders}} </h2>\
+                        </div>\
+                        <div class="col-xs-12 text-center" id="volumes">\
+                            <h2 class="center"> {{x.moq_model}} </h2>\
+                        </div>\
+                        <div class="col-xs-12 text-center">\
+                            <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
+                            <h3> <label>Article EAN:</label> {{x.ean}} </h3>\
+                        </div>\
+                    </div>'
 
-		}*/
+	}
 
-}]);
+});
