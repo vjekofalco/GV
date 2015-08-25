@@ -118,34 +118,28 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xxxl-8 col-xxl-8 col-xl-10">
 
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" id="itemsHolder" ng-view>
+                <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg hidden-xxxl hidden-xxl hidden-xl" ng-repeat="x in mainData">
+
+                    <small-screens></small-screens>
+
+                </div>
+
+            <div class="hidden-xs hidden-sm hidden-md col-lg-6 col-xl-6" id="itemsHolder" ng-view>
 
                 <div ng-repeat="x in mainData" ng-if="$even" id="itemWrapper">
 
                     <item-data></item-data>
-
-                    <!-- ********** VISIBLE ONLY FOR XS SCREEN SIZES ********** -->
-
-                     <small-screens></small-screens>
-
-                    <!-- ********** END OF XS OPTIMIZATION ********** -->
 
                 </div>
 
             </div>
 
 
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6" id="itemsHolder" ng-view>
+            <div class="hidden-xs hidden-sm hidden-md col-lg-6 col-xl-6" id="itemsHolder" ng-view>
 
                 <div ng-repeat="x in mainData" ng-if="$odd" id="itemWrapper">
 
                     <item-data></item-data>
-
-                    <!-- ********** VISIBLE ONLY FOR XS SCREEN SIZES ********** -->
-
-                     <small-screens></small-screens>
-
-                    <!-- ********** END OF XS OPTIMIZATION ********** -->
 
                 </div>
 
