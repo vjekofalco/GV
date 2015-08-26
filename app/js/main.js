@@ -274,7 +274,7 @@ angular.module('firstPage', [])
                     </div>\
                     <div class="row hidden-xs hidden-sm hidden-md">\
                         <div class="col-lg-4 text-center" id="itemDataHolder">\
-                            <img ng-src= "{{x.img}}" class="img-thumbnail img-responsive" id="itemPic" />\
+                            <img ng-src="{{x.img}}" class="img-thumbnail img-responsive" id="itemPic" />\
                         </div>\
                         <div class="col-lg-4" id="itemDataHolder">\
                            <h3> <label>Model:</label> {{x.model}} </h3><br>\
@@ -289,15 +289,15 @@ angular.module('firstPage', [])
                         </div>\
                     </div>\
                      <div class="row hidden-xs hidden-sm hidden-md">\
-                        <div class="col-lg-4  text-center" id="volumes">\
+                        <div class="col-lg-4" id="volumes">\
                             <h2 class="center"> <label>QTY Model:</label> {{x.total_orders}} </h2>\
                         </div>\
-                        <div class="col-lg-4 text-center" id="volumes">\
+                        <div class="col-lg-4" id="volumes">\
                             <h2 class="center"> {{x.moq_model}} </h2>\
                         </div>\
                         <div class="col-lg-4 text-center" id="QRCodeHolder">\
                             <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
-                            <h3> <label>Article EAN:</label> {{x.ean}} </h3>\
+                            <h3><label>Article EAN:</label> {{x.ean}} </h3>\
                         </div>\
                     </div>' 
 

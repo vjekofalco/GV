@@ -42,7 +42,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{navHeadings.brand}}<strong class="caret"></strong></a>
                                 <ul class="dropdown-menu">
                                     <li >
-                                        <a href="" ng-click="back('brand'); navHeadings.brand='Brand' "> {{navHeadings.brand}} </a>
+                                        <a href="" ng-click="back('brand'); navHeadings.brand='Brand' "> Brand </a>
                                     </li>
                                     <li ng-show="allData.brand.length > 1" ng-repeat="brandName in allData.brand">
                                         <a ng-click="filterModels('brand', brandName); navHeadings.brand=brandName">{{brandName}}</a>
@@ -55,7 +55,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{navHeadings.gender}} <strong class="caret"></strong></a>
                                 <ul class="dropdown-menu">
                                     <li >
-                                        <a href="" ng-click="back('gender'); navHeadings.gender = 'Gender' "> {{navHeadings.gender}} </a>
+                                        <a href="" ng-click="back('gender'); navHeadings.gender = 'Gender' "> Gender </a>
                                     </li>
                                     <li ng-show="allData.gender.length > 1" ng-repeat="genderType in allData.gender">
                                         <a ng-click="filterModels('gender', genderType); navHeadings.gender = genderType" >{{genderType}}</a>
@@ -68,7 +68,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{navHeadings.gv_core}}<strong class="caret"></strong></a>
                                 <ul class="dropdown-menu">
                                     <li >
-                                        <a href="" ng-click="back('gv_core_range'); navHeadings.gv_core='GV_Core'"> {{navHeadings.gv_core}} </a>
+                                        <a href="" ng-click="back('gv_core_range'); navHeadings.gv_core='GV_Core'"> GV_Core </a>
                                     </li>
                                     <li ng-show="allData.gv_core_range.length > 1" ng-repeat="gvCore in allData.gv_core_range">
                                         <a ng-click="filterModels('gv_core_range', gvCore); navHeadings.gv_core = gvCore">{{gvCore}}</a>
@@ -81,7 +81,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{navHeadings.material}}<strong class="caret"></strong></a>
                                 <ul class="dropdown-menu">
                                     <li >
-                                        <a href="" ng-click="back('material'); navHeadings.material='Material'"> {{navHeadings.material}} </a>
+                                        <a href="" ng-click="back('material'); navHeadings.material='Material'"> Material </a>
                                     </li>
                                     <li ng-show="allData.material.length > 1" ng-repeat="materialType in allData.material">
                                         <a ng-click="filterModels('material', materialType); navHeadings.material=materialType">{{materialType}}</a>
@@ -118,15 +118,19 @@
 
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xxxl-8 col-xxl-8 col-xl-10">
 
-                <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg hidden-xxxl hidden-xxl hidden-xl" ng-repeat="x in mainData">
+            <!--********** Vissible for XS, SM, and MD screen sizes **********-->   
+
+                <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg hidden-xxxl hidden-xxl hidden-xl" ng-repeat="x in mainData | limitTo:20" id="itemWrapper">
 
                     <small-screens></small-screens>
 
                 </div>
 
+             <!--********** End of small screens optimization **********-->
+
             <div class="hidden-xs hidden-sm hidden-md col-lg-6 col-xl-6" id="itemsHolder" ng-view>
 
-                <div ng-repeat="x in mainData" ng-if="$even" id="itemWrapper">
+                <div ng-repeat="x in mainData | limitTo:20" ng-if="$even" id="itemWrapper" class="bigScreen">
 
                     <item-data></item-data>
 
@@ -137,7 +141,7 @@
 
             <div class="hidden-xs hidden-sm hidden-md col-lg-6 col-xl-6" id="itemsHolder" ng-view>
 
-                <div ng-repeat="x in mainData" ng-if="$odd" id="itemWrapper">
+                <div ng-repeat="x in mainData | limitTo:20" ng-if="$odd" id="itemWrapper" class="bigScreen">
 
                     <item-data></item-data>
 
