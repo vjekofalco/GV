@@ -89,20 +89,15 @@
                                 </ul>
                             </li>
                         </ul>
-                        <ul class="nav navbar-nav">
-                            <li>
-                                <label class="checkbox-inline" for="EAN">EAN</label>
-                                <input type="checkbox" ng-model="EANCheckbox" ng-click="EANCheckboxfunction()" value="" name="EAN" id="EAN" />
-                                <!--<input type="checkbox" ng-click="EANCheckboxfunction()" value="" name="EAN" id="EAN" />-->
-                            </li>
-                        </ul>
-           
+                        <ul class="nav nav-tabs">
+                            <li ng-class="{active: EANCheckbox===false}"><a ng-click="EANCheckboxfunction(false)">Model</a></li>
+                            <li ng-class="{active: EANCheckbox===true}"><a ng-click="EANCheckboxfunction(true)">EAN</a></li>
                             <img src="img/logo_grandvision.png" class="pull-right" id="logo" />
-                          
+                        </ul>
+                   
                         </ul>
                 
                     </div>     
-                        <hr>
                 </nav>
         
             </div>
@@ -120,7 +115,13 @@
 
             <!--********** Vissible for XS, SM, and MD screen sizes **********-->   
 
-                <div class="col-xs-12 col-sm-12 col-md-12 hidden-lg hidden-xxxl hidden-xxl hidden-xl" ng-repeat="x in mainData | limitTo:20" id="itemWrapper">
+                <div class="col-xs-12 col-sm-12 hidden-md hidden-lg hidden-xxxl hidden-xxl hidden-xl" ng-repeat="x in mainData | limitTo:20" id="itemWrapper">
+
+                    <small-screens></small-screens>
+
+                </div>
+
+                <div class="hidden-xs hidden-sm col-md-12 hidden-lg hidden-xxxl hidden-xxl hidden-xl MdLgItemWrapper" ng-repeat="x in mainData | limitTo:20" id="itemWrapper">
 
                     <small-screens></small-screens>
 
@@ -130,7 +131,7 @@
 
             <div class="hidden-xs hidden-sm hidden-md col-lg-6 col-xl-6" id="itemsHolder" ng-view>
 
-                <div ng-repeat="x in mainData | limitTo:20" ng-if="$even" id="itemWrapper" class="bigScreen">
+                <div ng-repeat="x in mainData | limitTo:20" ng-if="$even" id="itemWrapper" class="bigScreen MdLgItemWrapper">
 
                     <item-data></item-data>
 
@@ -141,7 +142,7 @@
 
             <div class="hidden-xs hidden-sm hidden-md col-lg-6 col-xl-6" id="itemsHolder" ng-view>
 
-                <div ng-repeat="x in mainData | limitTo:20" ng-if="$odd" id="itemWrapper" class="bigScreen">
+                <div ng-repeat="x in mainData | limitTo:20" ng-if="$odd" id="itemWrapper" class="bigScreen MdLgItemWrapper">
 
                     <item-data></item-data>
 

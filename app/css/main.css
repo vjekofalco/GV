@@ -1,5 +1,5 @@
 .content{
-	margin-top: 120px;
+	margin-top: 100px;
 }
 
 #circle {
@@ -27,12 +27,17 @@
 }
 
 #volumes{
-	margin-top: 40px;
+	
 }
 
 #itemWrapper{
 	 border: 1px solid #a3a3a3;
 	 box-shadow: 3px 3px 3px #b7b7b7;
+	 margin-bottom: 10px;
+}
+
+.MdLgItemWrapper{
+	height: 290px;
 }
 
 .bigScreen{
@@ -76,9 +81,13 @@ h3{
 }
 
 #QRCodeHolder{
-	min-height: 135px;
+	position: relative;
+	bottom:35;
 }
 
+a {
+	color: #2157A3
+}
 
 
 

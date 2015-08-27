@@ -17,8 +17,7 @@ angular.module('firstPage', [])
 
 	})
 
-})
-
+}).run(['myService', function(myService){myService.getToken()}])
 .service('myService', function ($http){  
 
 	var credentials = {
@@ -34,7 +33,7 @@ angular.module('firstPage', [])
 
 		console.log("Getting a TOKEN...");
 
-	    return $http.post(config.tokenURL, credentials)
+	    return $http.post(config.apiURL + "/oauth", credentials)
     	    .success(function (data, status, headers, config) {
        
         	    sessionStorage.setItem('token', data.access_token);
@@ -53,16 +52,16 @@ angular.module('firstPage', [])
 	this.getData = function (api, filters){ // Initial server call collecting tom articles.
  
 		if(api == true){
-			var endpoint = config.dataEAN;
+			var endpoint = "/top-models?";
 		}
 		else{
-			var endpoint = config.dataURL;
+			var endpoint = "/top-articles?";
 		}
 
 		return $http({
 
 			maethod: 'POST', 
-			url: endpoint + filters,
+			url: config.apiURL + endpoint + filters,
 			headers: {'AUTHORIZATION' : 'Bearer ' + sessionStorage.getItem('token')} 
 
 		})
@@ -79,7 +78,7 @@ angular.module('firstPage', [])
 .controller('displayModels', ['$interval', '$scope', 'myService', function ($interval, $scope, myService) { 
 
 
-		$scope.navHeadings = {
+		$scope.navHeadings = { // Defining values for Menu filters.
 
 			"brand": "Brand",
 			"gender": "Gender",
@@ -93,9 +92,9 @@ angular.module('firstPage', [])
 		var filtering = ""; // Storing data from the last filter for the back function.
 		var i = "";
 		
-		console.log("Starting APP !");
+		console.log("Starting APP !");	
 
-		myService.getToken(); 
+		//myService.getToken(); // Taking token on first load
 
 		$interval (function (){ // Calling the server every 5 seconds!
 
@@ -220,7 +219,9 @@ angular.module('firstPage', [])
 
 		}
 
-		$scope.EANCheckboxfunction = function(){
+		$scope.EANCheckboxfunction = function(state){
+
+			$scope.EANCheckbox = state;
 
 			//console.log("New checkbox status:" + $scope.EANCheckbox);
 			for(i = 0; i<filters.length; i++){
@@ -280,7 +281,7 @@ angular.module('firstPage', [])
                            <h3> <label>Model:</label> {{x.model}} </h3><br>\
                            <h3> <label>Lifecycle:</label> {{x.carry_over}} </h3><br>\
                            <h3> <label>Size:</label> {{x.size}} </h3><br>\
-                           <h3> <label>ICo Price:</label> {{x.inter_co_price_eu}}<span class="pull-right">{{x.inter_co_price_latam}}</span></h3>\
+                           <h3> <label>ICo Price:</label> {{x.inter_co_price_eu}}&nbsp;&nbsp;<span>{{x.inter_co_price_latam}}</span></h3>\
                            </div>\
                         <div class="col-lg-4" id="itemDataHolder">\
                         <h3 ng-show=x.gv_core_range!="NO"> <label>GV Core Range: </label>  &nbsp; <h3 ng-if=x.gv_core_range=="GLOBAL" style="color:red;font-weight: bold;"> {{x.gv_core_range}}<br></h3><h3 ng-if=x.gv_core_range=="REGIONAL" style="font-weight: bold;"> {{x.gv_core_range}}<br></h3> </h3>\
@@ -297,7 +298,7 @@ angular.module('firstPage', [])
                         </div>\
                         <div class="col-lg-4 text-center" id="QRCodeHolder">\
                             <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
-                            <h3><label>Article EAN:</label> {{x.ean}} </h3>\
+                            <h3> {{x.ean}} </h3>\
                         </div>\
                     </div>' 
 
@@ -344,7 +345,7 @@ angular.module('firstPage', [])
                         </div>\
                         <div class="col-md-4 col-sm-4 text-center" id="QRCodeHolder">\
                             <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
-                            <h3> <label>Article EAN:</label> {{x.ean}} </h3>\
+                            <h3> {{x.ean}} </h3>\
                         </div>\
                     </div>\
 					<div class="row visible-xs">\
@@ -376,7 +377,7 @@ angular.module('firstPage', [])
                         </div>\
                         <div class="col-xs-12 text-center">\
                             <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
-                            <h3> <label>Article EAN:</label> {{x.ean}} </h3>\
+                            <h3> {{x.ean}} </h3>\
                         </div>\
                     </div>'
 
