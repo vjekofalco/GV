@@ -1,23 +1,10 @@
 angular.module('firstPage', [])
 
-.config(function($httpProvider) {
+.run(['myService', function(myService){
 
-	$httpProvider.interceptors.push(function(){
+	myService.getToken()
 
-		return {  // Returning response from HTTP request
-
-			response: function(req) {
-
-				console.log("HTTP_Response fetch!" + req);
-				return req;
-
-			}
-
-		}
-
-	})
-
-}).run(['myService', function(myService){myService.getToken()}])
+}])
 .service('myService', function ($http){  
 
 	var credentials = {
@@ -47,7 +34,7 @@ angular.module('firstPage', [])
 
         	});
 
-	}
+	};
 
 	this.getData = function (api, filters){ // Initial server call collecting tom articles.
  
@@ -75,7 +62,7 @@ angular.module('firstPage', [])
 
 })
 
-.controller('displayModels', ['$interval', '$scope', 'myService', function ($interval, $scope, myService) { 
+.controller('displayModels', ['$timeout', '$interval', '$scope', 'myService', function ($timeout, $interval, $scope, myService) { 
 
 
 		$scope.navHeadings = { // Defining values for Menu filters.
@@ -91,45 +78,58 @@ angular.module('firstPage', [])
 		var filters = []; // Variable for storing filter status.
 		var filtering = ""; // Storing data from the last filter for the back function.
 		var i = "";
-		
-		console.log("Starting APP !");	
+	
+		console.log("Starting APP ! ");
 
-		//myService.getToken(); // Taking token on first load
+		var mainFunc = function (){ 
 
-		$interval (function (){ // Calling the server every 5 seconds!
+			if( sessionStorage.getItem('token') !=  null ){	
 
-			for(i = 0; i<filters.length; i++){
+				for(i = 0; i<filters.length; i++){
 
-				filtering += filters[i]['filterName'] + "=" + filters[i]['filterValue'] + "&";
-				console.log(filtering);
-
-			}
-
-			myService.getData($scope.EANCheckbox, filtering).success(function(data){
-
-				$scope.makeMainData(data);
-
-				$scope.allData = data;
-
-				filtering = " ";
-
-				console.log(Date() + "  EAN Checkbox state: " + $scope.EANCheckbox);
-				console.log(data);
-
-			}).error(function(data, status){
-
-				console.log(status);
-				if (status == 403 || status == 401){ // Checking if Token is expired! 
-
-					filtering = " ";
-
-					myService.getToken();
+					filtering += filters[i]['filterName'] + "=" + filters[i]['filterValue'] + "&";
+					console.log(filtering);
 
 				}
 
-			}); 
+				myService.getData($scope.EANCheckbox, filtering)
+					.success(function(data){
 
-		}, 5000)
+						$scope.makeMainData(data);
+
+						$scope.allData = data;
+
+						filtering = " ";
+
+						console.log(Date() + "  EAN Checkbox state: " + $scope.EANCheckbox);
+						console.log(data);
+
+					})
+					.error(function(data, status){
+
+						console.log(status);
+						if (status == 403 || status == 401){ // Checking if Token is expired! 
+
+						filtering = " ";
+
+						myService.getToken();
+
+					}
+
+				})
+
+			}
+			else{
+
+				console.log('Waiting for the Token!');
+				$timeout(function(){mainFunc()}, 1000);
+
+			}
+		}; 
+
+		mainFunc();
+
+		$interval (function (){mainFunc()}, 5000)
 
 
 		$scope.filterModels = function (filter, value){
