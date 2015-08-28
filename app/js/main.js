@@ -305,10 +305,10 @@ angular.module('firstPage', [])
                     </div>\
                      <div class="row hidden-xs hidden-sm hidden-md">\
                         <div class="col-lg-4" id="volumes">\
-                            <h2 class="center"> <label>QTY Model:</label> {{x.total_orders}} </h2>\
+                            <h2> <label>QTY Model:</label> {{x.model_total_orders}} </h2>\
                         </div>\
                         <div class="col-lg-4" id="volumes">\
-                            <h2 class="center"> {{x.moq_model}} </h2>\
+                            <h2> <label>QTY EAN:</label> {{x.total_orders}} </h2>\
                         </div>\
                         <div class="col-lg-4 text-center" id="QRCodeHolder">\
                             <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
@@ -352,10 +352,10 @@ angular.module('firstPage', [])
                     </div>\
                      <div class="row hidden-xs">\
                         <div class="col-md-4 col-sm-4 text-center" id="volumes">\
-                            <h2 class="center"> <label>QTY Model:</label> {{x.total_orders}} </h2>\
+                           <h2> <label>QTY Model:</label> {{x.model_total_orders}} </h2>\
                         </div>\
                         <div class="col-md-4 col-sm-4 text-center" id="volumes">\
-                            <h2 class="center"> {{x.moq_model}} </h2>\
+                            <h2> <label>QTY EAN:</label> {{x.total_orders}} </h2>\
                         </div>\
                         <div class="col-md-4 col-sm-4 text-center" id="QRCodeHolder">\
                             <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
@@ -384,10 +384,10 @@ angular.module('firstPage', [])
                     </div>\
                     <div class="row visible-xs">\
                         <div class="col-xs-12 text-center" id="volumes">\
-                            <h2> <label>QTY Model:</label> {{x.total_orders}} </h2>\
+                            <h2> <label>QTY Model:</label> {{x.model_total_orders}} </h2>\
                         </div>\
                         <div class="col-xs-12 text-center" id="volumes">\
-                            <h2 class="center"> {{x.moq_model}} </h2>\
+                            <h2> <label>QTY EAN:</label> {{x.total_orders}} </h2>\
                         </div>\
                         <div class="col-xs-12 text-center">\
                             <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
