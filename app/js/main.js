@@ -1,10 +1,23 @@
 angular.module('firstPage', [])
 
-.run(['myService', function(myService){
+.config(function($httpProvider) {
 
-	myService.getToken()
+	$httpProvider.interceptors.push(function(){
 
-}])
+		return {  // Returning response from HTTP request
+
+			response: function(req) {
+
+				console.log("HTTP_Response fetch!" + req);
+				return req;
+
+			}
+
+		}
+
+	})
+
+})
 .service('myService', function ($http){  
 
 	var credentials = {
@@ -122,6 +135,7 @@ angular.module('firstPage', [])
 			else{
 
 				console.log('Waiting for the Token!');
+				myService.getToken();
 				$timeout(function(){mainFunc()}, 1000);
 
 			}
