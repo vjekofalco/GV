@@ -276,45 +276,44 @@ angular.module('firstPage', [])
 
 	return {
 		restrict: 'E',
-		template: '<div class="row">\
-                        <div class="col-lg-2">\
-                            <h2 id="circle"><span> {{$index + 1}} </span></h2>\
-                        </div>\
-                        <div class="col-lg-5">\
-                            <h2 class="text-center"> {{x.brand_name}} </h2>\
-                        </div>\
-                        <div class="col-lg-5">\
-                            <h2 class="text-center"> {{x.gender}} </h2>\
-                        </div>\
-                    </div>\
-                    <div class="row hidden-xs hidden-sm hidden-md">\
-                        <div class="col-lg-4 text-center" id="itemDataHolder">\
-                            <img ng-src="{{x.img}}" class="img-thumbnail img-responsive" id="itemPic" />\
-                        </div>\
-                        <div class="col-lg-4" id="itemDataHolder">\
-                           <h3> <label>Model:</label> {{x.model}} </h3><br>\
-                           <h3> <label>Lifecycle:</label> {{x.carry_over}} </h3><br>\
-                           <h3> <label>Size:</label> {{x.size}} </h3><br>\
-                           <h3> <label>ICo Price:</label> {{x.inter_co_price_eu}}&nbsp;&nbsp;<span>{{x.inter_co_price_latam}}</span></h3>\
-                           </div>\
-                        <div class="col-lg-4" id="itemDataHolder">\
-                        <h3 ng-show=x.gv_core_range!="NO"> <label>GV Core Range: </label>  &nbsp; <h3 ng-if=x.gv_core_range=="GLOBAL" style="color:red;font-weight: bold;"> {{x.gv_core_range}}<br></h3><h3 ng-if=x.gv_core_range=="REGIONAL" style="font-weight: bold;"> {{x.gv_core_range}}<br></h3> </h3>\
-                           <h3> <label>Material group:</label> {{x.material_group}} </h3><br>\
-                           <h3> <label>Sub Brand:</label> {{x.sub_brand}} </h3>\
-                        </div>\
-                    </div>\
-                     <div class="row hidden-xs hidden-sm hidden-md">\
-                        <div class="col-lg-4" id="volumes">\
-                            <h2> <label>QTY Model:</label> {{x.model_total_orders}} </h2>\
-                        </div>\
-                        <div class="col-lg-4" id="volumes">\
-                            <h2> <label>QTY EAN:</label> {{x.total_orders}} </h2>\
-                        </div>\
-                        <div class="col-lg-4 text-center" id="QRCodeHolder">\
-                            <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
-                            <h3> {{x.ean}} </h3>\
-                        </div>\
-                    </div>' 
+		template: '<div class="row hidden-xs hidden-sm hidden-md">\
+                    			<div class="col-lg-8">\
+                    				<div class="row">\
+                    					<div class="col-lg-2">\
+                            				<h2 id="circle"><span> {{$index + 1}} </span></h2>\
+                        				</div>\
+                        				<div class="col-lg-6">\
+                            				<h2 class="text-center"> {{x.brand_name}} </h2>\
+                        				</div>\
+                        				<div class="col-lg-4">\
+                            				<h2 class="text-center"> {{x.gender}} </h2>\
+                        				</div>\
+                        			</div>\
+                        			<div class="row">\
+                        				<div class="col-lg-6 text-center" id="itemDataHolder">\
+                            				<img ng-src="{{x.img}}" class="img-thumbnail img-responsive" id="itemPic" />\
+                        				</div>\
+                        				<div class="col-lg-6" id="itemDataHolder">\
+                           					<h3> <label>Model:</label> {{x.model}} </h3><br>\
+                           					<h3> <label>Lifecycle:</label> {{x.carry_over}} </h3><br>\
+                           					<h3> <label>Size:</label> {{x.size}} </h3><br>\
+                           					<h3> <label class="pull-left" id="priceLabel">ICo Price:</label> <span id="prices">{{x.inter_co_price_eu}}<br/>{{x.inter_co_price_latam}}</span></h3> \
+                           					<span id="QTYSpan"><h4> <label>QTY Model:</label> {{x.model_total_orders}} </h4>\
+                           					<h4> <label>QTY EAN:</label> {{x.total_orders}} </h4></span>\
+                        				</div>\
+                        			</div>\
+                    			</div>\
+                    			<div class="col-lg-4" id="topInfoBox">\
+                    				<h3 ng-show=x.gv_core_range!="NO"> <label>GV Core Range: </label>  &nbsp; <h3 ng-if=x.gv_core_range=="GLOBAL" style="color:red;font-weight: bold;"> {{x.gv_core_range}}<br></h3><h3 ng-if=x.gv_core_range=="REGIONAL" style="font-weight: bold;"> {{x.gv_core_range}}<br></h3> </h3>\
+                           			<h3> <label>Material group:</label> {{x.material_group}} </h3><br>\
+                           			<h3> <label>Sub Brand:</label> {{x.sub_brand}} </h3>\
+                           			<img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
+                            		<div class="text-center">\
+                            			<h3> {{x.ean}} </h3>\
+                            		</div>\
+                        		</div>\
+                    		</div>'
+
 
 	};
 
@@ -323,43 +322,52 @@ angular.module('firstPage', [])
 	return {
 
 		restrict: 'E',
-		template: '<div class="row">\
-                        <div class="col-xs-2 col-md-2 col-sm-2">\
+		template: '<div class="row hidden-xs">\
+						<div class="col-md-8 col-sm-8">\
+                    		<div class="row">\
+                    			<div class="col-md-2 col-sm-2">\
+                            		<h2 id="circle"><span> {{$index + 1}} </span></h2>\
+                        		</div>\
+                        		<div class="col-md-6 col-sm-6">\
+                            		<h2 class="text-center"> {{x.brand_name}} </h2>\
+                        		</div>\
+                        		<div class="col-md-4 col-sm-4">\
+                            		<h2 class="text-center"> {{x.gender}} </h2>\
+                        		</div>\
+                        	</div>\
+                        	<div class="row">\
+                        		<div class="col-md-6 col-sm-6 text-center" id="itemDataHolder">\
+                            		<img ng-src="{{x.img}}" class="img-thumbnail img-responsive" id="itemPic" />\
+                        		</div>\
+                        		<div class="col-md-6 col-sm-6" id="itemDataHolder">\
+                           			<h3> <label>Model:</label> {{x.model}} </h3><br>\
+                           			<h3> <label>Lifecycle:</label> {{x.carry_over}} </h3><br>\
+                           			<h3> <label>Size:</label> {{x.size}} </h3><br>\
+                           			<h3> <label class="pull-left" id="priceLabel">ICo Price:</label> <span id="prices">{{x.inter_co_price_eu}}<br/>{{x.inter_co_price_latam}}</span></h3> \
+                           			<span id="QTYSpan"><h4> <label>QTY Model:</label> {{x.model_total_orders}} </h4>\
+                           			<h4> <label>QTY EAN:</label> {{x.total_orders}} </h4></span>\
+                        		</div>\
+                        	</div>\
+                    	</div>\
+                    	<div class="col-md-4 col-sm-4" id="topInfoBox">\
+                    		<h3 ng-show=x.gv_core_range!="NO"> <label>GV Core Range: </label>  &nbsp; <h3 ng-if=x.gv_core_range=="GLOBAL" style="color:red;font-weight: bold;"> {{x.gv_core_range}}<br></h3><h3 ng-if=x.gv_core_range=="REGIONAL" style="font-weight: bold;"> {{x.gv_core_range}}<br></h3> </h3>\
+                           	<h3> <label>Material group:</label> {{x.material_group}} </h3><br>\
+                           	<h3> <label>Sub Brand:</label> {{x.sub_brand}} </h3>\
+                           	<img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
+                            <div class="text-center">\
+                            	<h3> {{x.ean}} </h3>\
+                            </div>\
+                        </div>\
+                    </div>\
+                    <div class="row visible-xs">\
+                        <div class="col-xs-2">\
                             <h2 id="circle"><span> {{$index + 1}} </span></h2>\
                         </div>\
-                        <div class="col-xs-6 col-md-5 col-sm-5">\
+                        <div class="col-xs-6">\
                             <h2 class="text-center"> {{x.brand_name}} </h2>\
                         </div>\
-                        <div class="col-xs-4 col-md-5 col-sm-5">\
+                        <div class="col-xs-4">\
                             <h2 class="text-center"> {{x.gender}} </h2>\
-                        </div>\
-                    </div>\
-                    <div class="row hidden-xs">\
-                        <div class="col-md-4 col-sm-4 text-center" id="itemDataHolder">\
-                            <img ng-src= "{{x.img}}" class="img-thumbnail img-responsive" id="itemPic" />\
-                        </div>\
-                        <div class="col-md-4 col-sm-4" id="itemDataHolder">\
-                           <h3> <label>Model:</label> {{x.model}} </h3><br>\
-                           <h3> <label>Lifecycle:</label> {{x.carry_over}} </h3><br>\
-                           <h3> <label>Size:</label> {{x.size}} </h3><br>\
-                           <h3> <label>ICo Price:</label> {{x.inter_co_price_eu}}<span class="pull-right">{{x.inter_co_price_latam}}</span></h3>\
-                           </div>\
-                        <div class="col-md-4 col-sm-4" id="itemDataHolder">\
-                        <h3 ng-show=x.gv_core_range!="NO"> <label>GV Core Range: </label>  &nbsp; <h3 ng-if=x.gv_core_range=="GLOBAL" style="color:red;font-weight: bold;"> {{x.gv_core_range}}<br></h3><h3 ng-if=x.gv_core_range=="REGIONAL" style="font-weight: bold;"> {{x.gv_core_range}}<br></h3> </h3>\
-                           <h3> <label>Material group:</label> {{x.material_group}} </h3><br>\
-                           <h3> <label>Sub Brand:</label> {{x.sub_brand}} </h3>\
-                        </div>\
-                    </div>\
-                     <div class="row hidden-xs">\
-                        <div class="col-md-4 col-sm-4 text-center" id="volumes">\
-                           <h2> <label>QTY Model:</label> {{x.model_total_orders}} </h2>\
-                        </div>\
-                        <div class="col-md-4 col-sm-4 text-center" id="volumes">\
-                            <h2> <label>QTY EAN:</label> {{x.total_orders}} </h2>\
-                        </div>\
-                        <div class="col-md-4 col-sm-4 text-center" id="QRCodeHolder">\
-                            <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
-                            <h3> {{x.ean}} </h3>\
                         </div>\
                     </div>\
 					<div class="row visible-xs">\

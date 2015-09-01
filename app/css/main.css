@@ -37,7 +37,7 @@
 }
 
 .MdLgItemWrapper{
-	height: 290px;
+	height: 230px;
 }
 
 .bigScreen{
@@ -52,7 +52,7 @@ h3 label{
 	color: #727272;
 }
 
-h2 label{
+h4 label{
 	color: #727272;
 }
 
@@ -68,7 +68,7 @@ h3{
 
 #itemDataHolder{
 	height: 135px;
-	padding-top: 10px;
+	padding-top: 5px;
 }
 
 #EAN{
@@ -88,6 +88,24 @@ h3{
 a {
 	color: #2157A3
 }
+
+#prices{
+	display: block;
+}
+
+#priceLabel{
+	margin-right: 10px;
+}
+
+#topInfoBox{
+	padding-top: 16px;
+}
+
+#QTYSpan{
+	display: block;
+	padding-top: 7px;
+}
+
 
 
 
