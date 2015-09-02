@@ -37,7 +37,7 @@
 }
 
 .MdLgItemWrapper{
-	height: 230px;
+	height: 216px;
 }
 
 .bigScreen{
@@ -97,11 +97,11 @@ a {
 }
 
 #priceLabel{
-	margin-right: 10px;
+	margin-right: 4px;
 }
 
 #topInfoBox{
-	padding-top: 16px;
+	padding-top: 12px;
 }
 
 #QTYSpan{

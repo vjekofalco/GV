@@ -52,10 +52,10 @@ angular.module('firstPage', [])
 	this.getData = function (api, filters){ // Initial server call collecting tom articles.
  
 		if(api == true){
-			var endpoint = "/top-models?";
+			var endpoint = "/top-articles?";
 		}
 		else{
-			var endpoint = "/top-articles?";
+			var endpoint = "/top-models?";
 		}
 
 		return $http({
@@ -82,7 +82,7 @@ angular.module('firstPage', [])
 
 			"brand": "Brand",
 			"gender": "Gender",
-			"gv_core": "GV_Core",
+			"gv_core": "GV Core",
 			"material": "Material"
 
 		}
@@ -298,13 +298,13 @@ angular.module('firstPage', [])
                            					<h3> <label>Lifecycle:</label> {{x.carry_over}} </h3><br>\
                            					<h3> <label>Size:</label> {{x.size}} </h3><br>\
                            					<h3> <label class="pull-left" id="priceLabel">ICo Price:</label> <span id="prices">{{x.inter_co_price_eu}}<br/>{{x.inter_co_price_latam}}</span></h3> \
-                           					<span id="QTYSpan"><h4> <label>QTY Model:</label> &nbsp;{{x.model_total_orders}} </h4>\
-                           					<h4> <label>QTY EAN:</label> &nbsp;&nbsp;&nbsp;&nbsp;{{x.total_orders}} </h4></span>\
+                           					<span id="QTYSpan"><h4> <label>QTY Model:</label>&nbsp;{{x.model_total_orders}} </h4>\
+                           					<h4> <label>QTY EAN:</label>&nbsp;&nbsp;&nbsp;&nbsp;{{x.total_orders}} </h4></span>\
                         				</div>\
                         			</div>\
                     			</div>\
                     			<div class="col-lg-4" id="topInfoBox">\
-                    				<h3 ng-show=x.gv_core_range!="NO"> <label>GV Core Range: </label>  &nbsp; <h3 ng-if=x.gv_core_range=="GLOBAL" style="color:red;font-weight: bold;"> {{x.gv_core_range}}<br></h3><h3 ng-if=x.gv_core_range=="REGIONAL" style="font-weight: bold;"> {{x.gv_core_range}}<br></h3> </h3>\
+                    				<h3 ng-show=x.gv_core_range!="NO"> <label>GV Core Range: </label> <h3 ng-if=x.gv_core_range=="GLOBAL" style="color:red;font-weight: bold;"> {{x.gv_core_range}}<br></h3><h3 ng-if=x.gv_core_range=="REGIONAL" style="font-weight: bold;"> {{x.gv_core_range}}<br></h3> </h3>\
                            			<h3> <label>Material group:</label> {{x.material_group}} </h3><br>\
                            			<h3> <label>Sub Brand:</label> {{x.sub_brand}} </h3>\
                            			<img ng-src="{{x.img_qr}}" width="100px" class="img-responsive center-block"  />\
@@ -350,7 +350,7 @@ angular.module('firstPage', [])
                         	</div>\
                     	</div>\
                     	<div class="col-md-4 col-sm-4" id="topInfoBox">\
-                    		<h3 ng-show=x.gv_core_range!="NO"> <label>GV Core Range: </label>  &nbsp; <h3 ng-if=x.gv_core_range=="GLOBAL" style="color:red;font-weight: bold;"> {{x.gv_core_range}}<br></h3><h3 ng-if=x.gv_core_range=="REGIONAL" style="font-weight: bold;"> {{x.gv_core_range}}<br></h3> </h3>\
+                    		<h3 ng-show=x.gv_core_range!="NO"><label>GV Core Range:</label> <h3 ng-if=x.gv_core_range=="GLOBAL" style="color:red;font-weight: bold;">{{x.gv_core_range}}<br></h3><h3 ng-if=x.gv_core_range=="REGIONAL" style="font-weight: bold;">{{x.gv_core_range}}<br></h3></h3>\
                            	<h3> <label>Material group:</label> {{x.material_group}} </h3><br>\
                            	<h3> <label>Sub Brand:</label> {{x.sub_brand}} </h3>\
                            	<img ng-src="{{x.img_qr}}" width="100px" class="img-responsive center-block"  />\
