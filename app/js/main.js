@@ -223,9 +223,10 @@ angular.module('firstPage', [])
 
 							//console.log("Article lenght:" + data._embedded.top_models[i].articles.length);
 							$scope.mainData[$scope.mainData.length] = data._embedded.top_models[i].articles[j];
-							//console.log($scope.mainData);
+							$scope.mainData[$scope.mainData.length - 1].model_total_orders = data._embedded.top_models[i].total_orders;
 
 						}
+
 					}
 					console.log("Displaying Model Datas! Scope lenght:" + data._embedded.top_models.length);
 					console.log($scope.mainData);
