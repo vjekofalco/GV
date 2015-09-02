@@ -298,8 +298,8 @@ angular.module('firstPage', [])
                            					<h3> <label>Lifecycle:</label> {{x.carry_over}} </h3><br>\
                            					<h3> <label>Size:</label> {{x.size}} </h3><br>\
                            					<h3> <label class="pull-left" id="priceLabel">ICo Price:</label> <span id="prices">{{x.inter_co_price_eu}}<br/>{{x.inter_co_price_latam}}</span></h3> \
-                           					<span id="QTYSpan"><h4> <label>QTY Model:</label> {{x.model_total_orders}} </h4>\
-                           					<h4> <label>QTY EAN:</label> {{x.total_orders}} </h4></span>\
+                           					<span id="QTYSpan"><h4> <label>QTY Model:</label> &nbsp;{{x.model_total_orders}} </h4>\
+                           					<h4> <label>QTY EAN:</label> &nbsp;&nbsp;&nbsp;&nbsp;{{x.total_orders}} </h4></span>\
                         				</div>\
                         			</div>\
                     			</div>\
@@ -344,8 +344,8 @@ angular.module('firstPage', [])
                            			<h3> <label>Lifecycle:</label> {{x.carry_over}} </h3><br>\
                            			<h3> <label>Size:</label> {{x.size}} </h3><br>\
                            			<h3> <label class="pull-left" id="priceLabel">ICo Price:</label> <span id="prices">{{x.inter_co_price_eu}}<br/>{{x.inter_co_price_latam}}</span></h3> \
-                           			<span id="QTYSpan"><h4> <label>QTY Model:</label> {{x.model_total_orders}} </h4>\
-                           			<h4> <label>QTY EAN:</label> {{x.total_orders}} </h4></span>\
+                           			<span id="QTYSpan"><h4> <label>QTY Model:</label> &nbsp;{{x.model_total_orders}} </h4>\
+                           			<h4> <label>QTY EAN:</label> &nbsp;&nbsp;&nbsp;&nbsp;{{x.total_orders}} </h4></span>\
                         		</div>\
                         	</div>\
                     	</div>\

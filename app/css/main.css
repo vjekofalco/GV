@@ -47,6 +47,9 @@
 #logo{
 	padding-right: 20px;
 }
+#logo-small{
+	padding-right: 10px;
+}
 
 h3 label{
 	color: #727272;
@@ -68,7 +71,7 @@ h3{
 
 #itemDataHolder{
 	height: 135px;
-	padding-top: 5px;
+	/*padding-top: 5px;*/
 }
 
 #EAN{
@@ -103,8 +106,9 @@ a {
 
 #QTYSpan{
 	display: block;
-	padding-top: 7px;
+	padding-top: 3px;
 }
+
 
 
 
