@@ -307,7 +307,7 @@ angular.module('firstPage', [])
                     				<h3 ng-show=x.gv_core_range!="NO"> <label>GV Core Range: </label>  &nbsp; <h3 ng-if=x.gv_core_range=="GLOBAL" style="color:red;font-weight: bold;"> {{x.gv_core_range}}<br></h3><h3 ng-if=x.gv_core_range=="REGIONAL" style="font-weight: bold;"> {{x.gv_core_range}}<br></h3> </h3>\
                            			<h3> <label>Material group:</label> {{x.material_group}} </h3><br>\
                            			<h3> <label>Sub Brand:</label> {{x.sub_brand}} </h3>\
-                           			<img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
+                           			<img ng-src="{{x.img_qr}}" width="100px" class="img-responsive center-block"  />\
                             		<div class="text-center">\
                             			<h3> {{x.ean}} </h3>\
                             		</div>\
@@ -353,7 +353,7 @@ angular.module('firstPage', [])
                     		<h3 ng-show=x.gv_core_range!="NO"> <label>GV Core Range: </label>  &nbsp; <h3 ng-if=x.gv_core_range=="GLOBAL" style="color:red;font-weight: bold;"> {{x.gv_core_range}}<br></h3><h3 ng-if=x.gv_core_range=="REGIONAL" style="font-weight: bold;"> {{x.gv_core_range}}<br></h3> </h3>\
                            	<h3> <label>Material group:</label> {{x.material_group}} </h3><br>\
                            	<h3> <label>Sub Brand:</label> {{x.sub_brand}} </h3>\
-                           	<img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
+                           	<img ng-src="{{x.img_qr}}" width="100px" class="img-responsive center-block"  />\
                             <div class="text-center">\
                             	<h3> {{x.ean}} </h3>\
                             </div>\
@@ -398,7 +398,7 @@ angular.module('firstPage', [])
                             <h2> <label>QTY EAN:</label> {{x.total_orders}} </h2>\
                         </div>\
                         <div class="col-xs-12 text-center">\
-                            <img src="img/qrcode.jpg" width="100px" class="img-responsive center-block"  />\
+                            <img ng-src="{{x.img_qr}}" width="100px" class="img-responsive center-block"  />\
                             <h3> {{x.ean}} </h3>\
                         </div>\
                     </div>'
