@@ -47,7 +47,7 @@ run "cp -R $dpl_to/tmp/* $dpl_to/releases/$dpl_revision"
 run "ln -s $dpl_to/shared/.htaccess $dpl_to/releases/$dpl_revision/.htaccess"
 run "ln -s $dpl_to/shared/.htpasswd $dpl_to/releases/$dpl_revision/.htpasswd"
 
-# Publish 
+# Publish
 run "rm -rf $dpl_to/current"
 run "ln -s $dpl_to/releases/$dpl_revision $dpl_to/current"
 
