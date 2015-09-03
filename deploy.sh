@@ -51,7 +51,7 @@ run "ln -s $dpl_to/shared/.htpasswd $dpl_to/releases/$dpl_revision/.htpasswd"
 run "rm -rf $dpl_to/current"
 run "ln -s $dpl_to/releases/$dpl_revision $dpl_to/current"
 
-# Clean old releases
+# Clean old releases 
 run "(ls -td -1 $dpl_to/releases/* | head -n 5 ; ls -td -1 $dpl_to/releases/*) | sort | uniq -u | xargs rm -rf"
 
 # Log deployment
