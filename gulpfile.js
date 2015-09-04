@@ -34,7 +34,7 @@ gulp.task('default', function(){
       ],
       usePrefix: false
     }))
-	.pipe(gulp.dest('app/js/'));
+	.pipe(gulp.dest('app/src/'));
 
 });
 
@@ -81,7 +81,7 @@ gulp.task('api-data-prompt', function(){
       ],
       usePrefix: false
     }))
-	.pipe(gulp.dest('app/js/'));
+	.pipe(gulp.dest('app/src/'));
 
 	}))
 
@@ -109,7 +109,7 @@ gulp.task('api-data', function(){
       ],
       usePrefix: false
     }))
-	.pipe(gulp.dest('app/js/'));
+	.pipe(gulp.dest('app/src/'));
 
 })
 
