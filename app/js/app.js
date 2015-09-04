@@ -2,8 +2,8 @@
 
 var config = {
 
-	username: "admin",
-	password: "admin",
-	apiURL: "http://grandvision-ifair-server.appropo.info/api",
+	username: 'u-name',
+	password: 'api-pass',
+	apiURL: 'api-url',
 
 }
