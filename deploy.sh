@@ -44,8 +44,8 @@ run "mkdir -vpm 755 $dpl_to/releases/$dpl_revision"
 run "cp -R $dpl_to/tmp/* $dpl_to/releases/$dpl_revision"
 
 # Link shared resources
-run "ln -s $dpl_to/shared/.htaccess $dpl_to/releases/$dpl_revision/.htaccess"
-run "ln -s $dpl_to/shared/.htpasswd $dpl_to/releases/$dpl_revision/.htpasswd"
+run "ln -s $dpl_to/shared/.htaccess $dpl_to/releases/$dpl_revision/app/.htaccess"
+run "ln -s $dpl_to/shared/.htpasswd $dpl_to/releases/$dpl_revision/app/.htpasswd"
 
 # Publish
 run "rm -rf $dpl_to/current"

@@ -301,7 +301,7 @@ angular.module('firstPage', [])
                             				<img ng-src="{{x.img}}" class="img-thumbnail img-responsive" id="itemPic" />\
                         				</div>\
                         				<div class="col-lg-6" id="itemDataHolder">\
-                           					<h3> <label>Model:</label> {{x.model}} </h3><br>\
+                           					<h3> <label>Model:</label> {{x.model}} / {{x.color_code}}</h3><br>\
                            					<h3> <label>Lifecycle:</label> {{x.carry_over}} </h3><br>\
                            					<h3> <label>Size:</label> {{x.size}} </h3><br>\
                            					<h3> <label class="pull-left" id="priceLabel">ICo Price:</label> <span id="prices">{{x.inter_co_price_eu}}<br/>{{x.inter_co_price_latam}}</span></h3> \
@@ -347,7 +347,7 @@ angular.module('firstPage', [])
                             		<img ng-src="{{x.img}}" class="img-thumbnail img-responsive" id="itemPic" />\
                         		</div>\
                         		<div class="col-md-6 col-sm-6" id="itemDataHolder">\
-                           			<h3> <label>Model:</label> {{x.model}} </h3><br>\
+                           			<h3> <label>Model:</label> {{x.model}} / {{x.color_code}} </h3><br>\
                            			<h3> <label>Lifecycle:</label> {{x.carry_over}} </h3><br>\
                            			<h3> <label>Size:</label> {{x.size}} </h3><br>\
                            			<h3> <label class="pull-left" id="priceLabel">ICo Price:</label> <span id="prices">{{x.inter_co_price_eu}}<br/>{{x.inter_co_price_latam}}</span></h3> \
@@ -388,7 +388,7 @@ angular.module('firstPage', [])
                     </div>\
                     <div class="row visible-xs">\
                         <div class="col-xs-12 text-center" id="itemDataHolder">\
-                           <h3> <label>Model:</label> {{x.model}} </h3><br>\
+                           <h3> <label>Model:</label> {{x.model}} / {{x.color_code}} </h3><br>\
                            <h3> <label>Lifecycle:</label> {{x.carry_over}} </h3><br>\
                            <h3> <label>Size:</label> {{x.size}} </h3><br>\
                            <h3> <label>ICo Price:</label> {{x.inter_co_price_eu}}  &nbsp;&nbsp; <span>   {{x.inter_co_price_latam}}</span></h3><br>\
