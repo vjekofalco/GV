@@ -219,13 +219,19 @@ angular.module('firstPage', [])
 					$scope.mainData = new Array;
 
 					for(var i=0; i<data._embedded.top_models.length; i++){
-						for(var j=0; j<data._embedded.top_models[i].articles.length; j++){
+						
+						/* ---------- Commenting code block for the user requirements fix. Issue date: 07.09.2015. -------------- */
+
+						//for(var j=0; j<data._embedded.top_models[i].articles.length; j++){
 
 							//console.log("Article lenght:" + data._embedded.top_models[i].articles.length);
-							$scope.mainData[$scope.mainData.length] = data._embedded.top_models[i].articles[j];
-							$scope.mainData[$scope.mainData.length - 1].model_total_orders = data._embedded.top_models[i].total_orders;
+							//$scope.mainData[$scope.mainData.length] = data._embedded.top_models[i].articles[j];
+							//$scope.mainData[$scope.mainData.length - 1].model_total_orders = data._embedded.top_models[i].total_orders;
 
-						}
+						//}
+						$scope.mainData[$scope.mainData.length] = data._embedded.top_models[i].articles[0];
+						$scope.mainData[$scope.mainData.length - 1].model_total_orders = data._embedded.top_models[i].total_orders;
+
 
 					}
 					console.log("Displaying Model Datas! Scope lenght:" + data._embedded.top_models.length);

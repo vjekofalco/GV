@@ -109,6 +109,11 @@ a {
 	padding-top: 3px;
 }
 
+#scrollable-menu{
+	height: auto;
+    max-height: 450px;
+    overflow-x: hidden;
+}
 
 
 
