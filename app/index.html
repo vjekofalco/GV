@@ -45,7 +45,7 @@
                                     <li >
                                         <a href="" ng-click="back('brand'); navHeadings.brand='Brand' "> Brand </a>
                                     </li>
-                                    <li ng-show="allData.brand.length > 1" ng-repeat="brandName in allData.brand">
+                                    <li ng-show="allData.brand.length > 1" ng-repeat="brandName in allData.brand | orderBy:'toString()'">
                                         <a ng-click="filterModels('brand', brandName); navHeadings.brand=brandName">{{brandName}}</a>
                                     </li>
                                 </ul>
@@ -84,7 +84,7 @@
                                     <li >
                                         <a href="" ng-click="back('material'); navHeadings.material='Material'"> Material </a>
                                     </li>
-                                    <li ng-show="allData.material.length > 1" ng-repeat="materialType in allData.material">
+                                    <li ng-show="allData.material.length > 1" ng-repeat="materialType in allData.material | orderBy:'toString()'">
                                         <a ng-click="filterModels('material', materialType); navHeadings.material=materialType">{{materialType}}</a>
                                     </li>
                                 </ul>
